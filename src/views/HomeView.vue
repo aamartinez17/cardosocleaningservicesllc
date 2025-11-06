@@ -45,7 +45,7 @@
               <i class="service-icon bi bi-house-heart-fill"></i>
               <h3 class="service-card-title">Residential Cleaning</h3>
               <p>Complete home cleaning services to make your space sparkle. We handle everything from dusting to deep cleaning.</p>
-              <router-link to="/services" class="service-link">Learn More</router-link>
+              <router-link to="/services/residential" class="service-link">Learn More</router-link>
             </div>
           </div>
           <!-- Commercial -->
@@ -54,7 +54,7 @@
               <i class="service-icon bi bi-building-fill"></i>
               <h3 class="service-card-title">Commercial Cleaning</h3>
               <p>Professional cleaning for offices, fitness clubs, and body shops to ensure a clean and healthy environment.</p>
-              <router-link to="/services" class="service-link">Learn More</router-link>
+              <router-link to="/services/commercial" class="service-link">Learn More</router-link>
             </div>
           </div>
           <!-- Move-In/Out -->
@@ -63,7 +63,7 @@
               <i class="service-icon bi bi-truck"></i>
               <h3 class="service-card-title">Move-In/Move-Out Cleaning</h3>
               <p>Stress-free moving with our thorough cleaning services. We prepare your old or new home for a fresh start.</p>
-              <router-link to="/services" class="service-link">Learn More</router-link>
+              <router-link to="/services/move-in-out" class="service-link">Learn More</router-link>
             </div>
           </div>
           <!-- Construction -->
@@ -72,7 +72,7 @@
               <i class="service-icon bi bi-cone-striped"></i>
               <h3 class="service-card-title">New Construction Cleanup</h3>
               <p>Post-construction cleaning to remove dust, debris, and dirt, making your new property ready for occupancy.</p>
-              <router-link to="/services" class="service-link">Learn More</router-link>
+              <router-link to="/services/construction" class="service-link">Learn More</router-link>
             </div>
           </div>
         </div>

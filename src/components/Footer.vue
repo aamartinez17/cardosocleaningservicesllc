@@ -42,16 +42,16 @@
           <h5 class="footer-heading">Our Services</h5>
           <ul class="nav flex-column footer-links">
             <li class="nav-item">
-              <router-link class="nav-link" to="/services">Residential Cleaning</router-link>
+              <router-link class="nav-link" to="/services/residential">Residential Cleaning</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/services">Commercial Cleaning</router-link>
+              <router-link class="nav-link" to="/services/commercial">Commercial Cleaning</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/services">Move-In/Move-Out</router-link>
+              <router-link class="nav-link" to="/services/move-in-out">Move-In/Move-Out</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/services">New Construction Cleanup</router-link>
+              <router-link class="nav-link" to="/services/construction">New Construction Cleanup</router-link>
             </li>
           </ul>
         </div>
