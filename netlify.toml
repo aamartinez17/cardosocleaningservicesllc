@@ -1,0 +1,19 @@
+# This is a Netlify configuration file.
+# It allows you to define build settings, redirects, and more.
+
+[build]
+  # This is the command to build your Vue project.
+  # It assumes you are using Vue CLI or Vite's default build script.
+  command = "npm run build"
+  
+  # This is the directory that Netlify will deploy.
+  # Vue CLI and Vite typically build to the 'dist' directory.
+  publish = "dist"
+
+[[redirects]]
+  # This rule is the equivalent of the one in the _redirects file.
+  # It tells Netlify to serve the index.html file for any path that isn't a file.
+  # This is the key to making client-side routing work.
+  from = "/*"
+  to = "/index.html"
+  status = 200

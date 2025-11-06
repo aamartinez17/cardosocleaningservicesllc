@@ -1,0 +1,29 @@
+@import './_variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@300;400;700&display=swap');
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--color-text-light);
+  font-family: var(--font-family-body);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+  color: var(--color-primary);
+}
+
+section {
+  overflow: hidden;
+  width: 100%;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  opacity: 0.7;
+}
+
+/* This styles the pagination dots */
+.swiper-pagination-bullet-active {
+  background-color: var(--color-accent) !important;
+}
