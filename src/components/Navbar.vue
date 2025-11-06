@@ -1,11 +1,5 @@
 <template>
-  <!-- 
-    Bootstrap 5 Navbar:
-    - 'fixed-top': Keeps the navbar visible on scroll.
-    - 'navbar-expand-lg': Collapses the navbar on screens smaller than 'lg' (992px).
-    - 'navbar-light': Configures text for a light background.
-  -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" ref="navRef">
     <div class="container">
       
       <!-- Logo / Brand Link -->
@@ -94,8 +88,8 @@
 </template>
 
 <script setup>
-// --- UPDATED IMPORTS ---
-import { ref, inject, onMounted, watch } from 'vue';
+// --- UPDATED IMPORTS (Added onUnmounted) ---
+import { ref, inject, onMounted, onUnmounted, watch } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { Collapse } from 'bootstrap'; // Import Bootstrap's JS
 
@@ -103,7 +97,7 @@ import { Collapse } from 'bootstrap'; // Import Bootstrap's JS
 const openDrawer = inject('openQuoteDrawer');
 const isDrawerOpen = inject('isDrawerOpen'); // Injected the state
 
-// --- Page Links (UPDATED) ---
+// --- Page Links ---
 const navLinks = ref([
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
@@ -111,8 +105,8 @@ const navLinks = ref([
     name: 'Services',
     isDropdown: true,
     children: [
-      { name: 'All Services', path: '/services' }, // <-- ADDED
-      { isDivider: true }, // <-- ADDED
+      { name: 'All Services', path: '/services' },
+      { isDivider: true },
       { name: 'Residential Cleaning', path: '/services/residential' },
       { name: 'Commercial Cleaning', path: '/services/commercial' },
       { name: 'Move-In/Move-Out', path: '/services/move-in-out' },
@@ -122,7 +116,8 @@ const navLinks = ref([
   { name: 'Contact', path: '/contact' },
 ]);
 
-// --- NEW NAVBAR COLLAPSE LOGIC ---
+// --- NAVBAR COLLAPSE LOGIC ---
+const navRef = ref(null); // --- ADDED: Ref for the entire <nav> element
 const navbarNavRef = ref(null); // Ref for the collapsible element
 const collapseInstance = ref(null); // Ref to store the Bootstrap Collapse instance
 const route = useRoute(); // Get the route object
@@ -134,6 +129,18 @@ onMounted(() => {
       toggle: false, // We will control it manually
     });
   }
+  
+  // --- ADDED: Listen for clicks on the whole document
+  document.addEventListener('click', handleClickOutside);
+});
+
+// --- ADDED: Clean up the listener when the component is destroyed
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside);
+  // Also, destroy the Bootstrap instance to prevent memory leaks
+  if (collapseInstance.value) {
+    collapseInstance.value.dispose();
+  }
 });
 
 // Function to manually hide the navbar
@@ -142,6 +149,21 @@ const hideNavbar = () => {
     collapseInstance.value.hide();
   }
 };
+
+// --- ADDED: Handler to check if the click was outside the navbar
+const handleClickOutside = (event) => {
+  // Check if the collapsible menu is even open
+  const isNavbarOpen = navbarNavRef.value?.classList.contains('show');
+  if (!isNavbarOpen || !navRef.value) {
+    return; // Not open or ref isn't ready, do nothing
+  }
+
+  // Check if the click's target is NOT the navbar or a child of the navbar
+  if (!navRef.value.contains(event.target)) {
+    hideNavbar(); // If the click was outside, hide the menu
+  }
+};
+
 
 // Watcher 1: Close navbar on route change (e.g., clicking a link)
 watch(() => route.path, () => {
@@ -187,7 +209,7 @@ watch(isDrawerOpen, (isOpen) => {
   color: var(--color-primary);
 }
 
-/* NEW: Style for the dropdown menu */
+/* Style for the dropdown menu */
 .dropdown-menu {
   border-radius: var(--border-radius);
   border: 1px solid rgba(0,0,0,0.1);
