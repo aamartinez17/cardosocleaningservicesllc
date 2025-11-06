@@ -117,7 +117,7 @@
           <div class="col-lg-6" data-aos="fade-right">
             <!-- TODO: Replace this placeholder with a real photo -->
             <img 
-              src="https://placehold.co/600x450/443091/FFFFFF?text=Spotless+Commercial+Space" 
+              src="/images/homeview-mid-section-cta.png" 
               alt="Clean commercial space" 
               class="cta-mid-image"
             >
@@ -321,7 +321,7 @@
           <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="100">
             <!-- TODO: Replace this placeholder with a real photo -->
             <img 
-              src="https://placehold.co/600x400/3DB6BC/FFFFFF?text=Happy+Client+or+Team" 
+              src="/images/homeview-faq.png" 
               alt="Cardoso Cleaning team member" 
               class="faq-image"
             >
@@ -416,7 +416,7 @@ const testimonials = ref([
 /* 1. Hero Section (No changes) */
 .hero-section {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-              url('https://placehold.co/1920x1080/443091/B3B5B8?text=Cleaning+Service+Image') 
+              url('/images/hero-page-image.png') 
               no-repeat center center;
   background-size: cover;
   padding: 8rem var(--spacing-md);

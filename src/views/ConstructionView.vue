@@ -4,7 +4,7 @@
     <!-- 1. Reusable Page Header -->
     <ServicePageHeader 
       title="New Construction Cleanup" 
-      imageUrl="https://placehold.co/1920x400/443091/B3B5B8?text=New+Construction+Site"
+      imageUrl="/images/new-construction-header.png"
     />
 
     <!-- 2. Intro Content Section -->
@@ -29,8 +29,8 @@
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <!-- Image Placeholder 1 -->
             <img 
-              src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=New+Renovated+Kitchen" 
-              alt="A newly renovated kitchen after cleanup" 
+              src="/images/new-construction-intro-section.png" 
+              alt="A busy new building construction site with workers" 
               class="img-fluid rounded-image"
             >
           </div>
@@ -101,8 +101,8 @@
           <div class="col-lg-6" data-aos="fade-right">
             <!-- Image Placeholder 2 -->
             <img 
-              src="https://placehold.co/600x450/443091/FFFFFF?text=Pristine+New+Bathroom" 
-              alt="A pristine, newly built bathroom" 
+              src="/images/new-construction-why-us-section.png" 
+              alt="A construction site transforming into a polished space" 
               class="img-fluid rounded-image"
             >
           </div>

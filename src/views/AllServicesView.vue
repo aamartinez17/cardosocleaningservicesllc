@@ -4,7 +4,7 @@
     <!-- 1. Reusable Page Header -->
     <ServicePageHeader 
       title="Our Cleaning Services" 
-      imageUrl="https://placehold.co/1920x400/443091/B3B5B8?text=Cardoso+Cleaning+Team"
+      imageUrl="/images/all-services-header.png"
     />
 
     <!-- 2. Intro Content Section -->
@@ -29,7 +29,7 @@
         <div class="row align-items-center service-feature" data-aos="fade-up">
           <div class="col-lg-6 mb-4 mb-lg-0">
             <img 
-              src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Spotless+Living+Room" 
+              src="/images/all-services-residential-services-section.png" 
               alt="Spotless residential living room" 
               class="img-fluid rounded-image"
             >
@@ -50,7 +50,7 @@
           <!-- Image on right (order-lg-2), Text on left (order-lg-1) -->
           <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
             <img 
-              src="https://placehold.co/600x450/443091/FFFFFF?text=Clean+Office+Space" 
+              src="/images/all-services-commercial-service-section.png" 
               alt="Clean commercial office space" 
               class="img-fluid rounded-image"
             >
@@ -70,7 +70,7 @@
         <div class="row align-items-center service-feature" data-aos="fade-up">
           <div class="col-lg-6 mb-4 mb-lg-0">
             <img 
-              src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Empty+Clean+Home" 
+              src="/images/all-services-move-in-out-service-section.png" 
               alt="Empty clean home for moving" 
               class="img-fluid rounded-image"
             >
@@ -91,8 +91,8 @@
           <!-- Image on right (order-lg-2), Text on left (order-lg-1) -->
           <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
             <img 
-              src="https://placehold.co/600x450/443091/FFFFFF?text=New+Construction+Site" 
-              alt="Post-construction cleanup site" 
+              src="/images/all-services-new-construction-service-section.png" 
+              alt="Post-construction cleanup site before and after" 
               class="img-fluid rounded-image"
             >
           </div>

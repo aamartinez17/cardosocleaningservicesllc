@@ -4,7 +4,7 @@
     <!-- 1. Reusable Page Header -->
     <ServicePageHeader 
       title="Residential Cleaning" 
-      imageUrl="https://placehold.co/1920x400/443091/B3B5B8?text=Residential+Cleaning"
+      imageUrl="/images/residentialview-header.png"
     />
 
     <!-- 2. Intro Content Section -->
@@ -29,7 +29,7 @@
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <!-- Image Placeholder 1 -->
             <img 
-              src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Spotless+Living+Room" 
+              src="/images/residentialview-intro-section.png" 
               alt="A spotless, clean living room" 
               class="img-fluid rounded-image"
             >
@@ -105,7 +105,7 @@
           <div class="col-lg-6" data-aos="fade-right">
             <!-- Image Placeholder 2 -->
             <img 
-              src="https://placehold.co/600x450/443091/FFFFFF?text=Clean+Kitchen" 
+              src="/images/residentialview-deep-clean.png" 
               alt="A sparkling clean kitchen" 
               class="img-fluid rounded-image"
             >

@@ -4,7 +4,7 @@
     <!-- 1. Reusable Page Header -->
     <ServicePageHeader 
       title="About Cardoso Cleaning" 
-      imageUrl="https://placehold.co/1920x400/443091/B3B5B8?text=Our+Team"
+      imageUrl="/images/aboutview-header.png"
     />
 
     <!-- 2. Our Story Section -->

@@ -4,7 +4,7 @@
     <!-- 1. Reusable Page Header -->
     <ServicePageHeader 
       title="Commercial Cleaning" 
-      imageUrl="https://placehold.co/1920x400/443091/B3B5B8?text=Clean+Office+Lobby"
+      imageUrl="/images/commercialview-header.png"
     />
 
     <!-- 2. Intro Content Section -->
@@ -29,7 +29,7 @@
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <!-- Image Placeholder 1 -->
             <img 
-              src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Modern+Office+Space" 
+              src="/images/commercialview-intro-section.png" 
               alt="A clean, modern office space" 
               class="img-fluid rounded-image"
             >
@@ -88,7 +88,7 @@
           <div class="col-lg-6" data-aos="fade-right">
             <!-- Image Placeholder 2 -->
             <img 
-              src="https://placehold.co/600x450/443091/FFFFFF?text=Sanitized+Restroom" 
+              src="/images/commercialview-services-section.png" 
               alt="A sparkling clean commercial restroom" 
               class="img-fluid rounded-image"
             >

@@ -4,7 +4,7 @@
     <!-- 1. Reusable Page Header -->
     <ServicePageHeader 
       title="Move-In / Move-Out Cleaning" 
-      imageUrl="https://placehold.co/1920x400/443091/B3B5B8?text=Empty+Home"
+      imageUrl="/images/move-in-out-header.png"
     />
 
     <!-- 2. Intro Content Section -->
@@ -29,7 +29,7 @@
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <!-- Image Placeholder 1 -->
             <img 
-              src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Moving+Boxes" 
+              src="/images/move-in-out-intro-section.png" 
               alt="An empty, clean room with moving boxes" 
               class="img-fluid rounded-image"
             >
@@ -101,7 +101,7 @@
           <div class="col-lg-6" data-aos="fade-right">
             <!-- Image Placeholder 2 -->
             <img 
-              src="https://placehold.co/600x450/443091/FFFFFF?text=Clean+Empty+Apartment" 
+              src="/images/move-in-out-why-us-section.png" 
               alt="A sparkling clean empty apartment" 
               class="img-fluid rounded-image"
             >
