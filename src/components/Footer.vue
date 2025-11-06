@@ -14,7 +14,7 @@
             >
           </router-link>
           <p class="footer-blurb">
-            Providing spotless residential and commercial spaces in Connecticut. We are bonded, insured, and dedicated to your satisfaction.
+            Providing spotless residential and commercial spaces in Virginia. We are bonded, insured, and dedicated to your satisfaction.
           </p>
         </div>
         

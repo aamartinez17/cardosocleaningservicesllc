@@ -30,7 +30,7 @@
             </p>
 
             <p>
-              Founded by Sal Romero in 2022, our company was built on a simple foundation: to provide a reliable, professional, and high-quality cleaning service that our clients can trust.
+              Founded by Maria Cardoso in 2022, our company was built on a simple foundation: to provide a reliable, professional, and high-quality cleaning service that our clients can trust.
             </p>
             <!-- MOVED THIS PARAGRAPH DOWN FOR BETTER FLOW -->
             <p>
@@ -43,8 +43,8 @@
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <!-- Image Placeholder 1 -->
             <img 
-              src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Sal+Romero+(Founder)" 
-              alt="Sal Romero, Founder of Cardoso Cleaning" 
+              src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Maria+Cardoso+(Founder)" 
+              alt="Maria Cardoso, Founder of Cardoso Cleaning" 
               class="img-fluid rounded-image"
             >
           </div>

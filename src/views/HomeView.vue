@@ -8,7 +8,7 @@
           Spotless Spaces, Brighter Lives
         </h1>
         <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
-          Professional residential and commercial cleaning in Connecticut.
+          Professional residential and commercial cleaning in Harrisonburg.
         </p>
         <!-- 
           UPDATED: 
@@ -125,7 +125,7 @@
           <!-- Text/CTA Column -->
           <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
             <h2 class="cta-mid-title">
-              Your Business Deserves the Best
+              Your Space Deserves the Best
             </h2>
             <p class="cta-mid-text">
               A clean, healthy environment is vital for your employees and customers. We specialize in reliable, customized cleaning for fitness clubs, body shops, and offices.
@@ -267,7 +267,7 @@
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    We offer a wide range, including standard **Residential Cleaning**, **Commercial Cleaning** (for offices, fitness clubs, body shops), **Move-In/Move-Out Cleaning**, and **New Construction Cleanup**. We can tailor a plan to fit your exact needs!
+                    We offer a wide range, including standard Residential Cleaning, Commercial Cleaning (for offices, fitness clubs, body shops), Move-In/Move-Out Cleaning, and New Construction Cleanup. We can tailor a plan to fit your exact needs!
                   </div>
                 </div>
               </div>
@@ -375,7 +375,7 @@ const testimonials = ref([
   },
   {
     name: 'Mike P., Rockingham Co.',
-    quote: 'We use them for our commercial space, and the difference is night and day. Sal is responsive, and the crew is reliable. Our office has never been cleaner. Great for business.',
+    quote: 'We use them for our commercial space, and the difference is night and day. Maria is responsive, and the crew is reliable. Our office has never been cleaner. Great for business.',
     rating: 5
   },
   {
