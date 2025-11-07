@@ -337,7 +337,7 @@
                 </h2>
                 <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    Our standard operating hours are **Monday - Saturday, 8:00 AM to 5:00 PM**.
+                    Our standard operating hours are Monday - Saturday, 8:00 AM to 5:00 PM.
                   </div>
                 </div>
               </div>

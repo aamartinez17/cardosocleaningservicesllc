@@ -48,9 +48,9 @@ defineProps({
 .service-header-container {
   position: relative;
   width: 100%;
-  height: 40vh; /* 40% of the viewport height */
+  height: 50vh; /* 40% of the viewport height */
   min-height: 300px;
-  max-height: 450px;
+  /* max-height: 700px; */
   display: flex;
   align-items: center;
   justify-content: center;
