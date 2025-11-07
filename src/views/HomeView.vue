@@ -667,13 +667,26 @@ min-height: calc(100vh - var(--top-padding));
 }
 
 .leave-review-section .container {
-  padding: var(--spacing-xl);
+  /* padding: var(--spacing-xl);
   border: 5px solid var(--color-accent);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius); */
   /* background-color: var(--bg-primary); */
 /* 
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='75' viewBox='0 0 75 75'><path fill-opacity='0.3' fill='%23B3B5B8' d='M37.5%2032.5%20L38.5%2036.5%20L42.5%2037.5%20L38.5%2038.5%20L37.5%2042.5%20L36.5%2038.5%20L32.5%2037.5%20L36.5%2036.5%20Z'/></svg>");
   background-repeat: repeat; */
+  background-color: var(--color-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition-default);
+  height: 100%;
+  border-top: 5px solid var(--color-secondary);
+  margin-top: var(--spacing-md);
+}
+
+.leave-review-section .container:hover {
+  transform: translateY(-5px);
+  border-top-color: var(--color-accent);
 }
 
 .review-cta-title {

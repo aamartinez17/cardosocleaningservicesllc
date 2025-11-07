@@ -179,6 +179,7 @@ const currentYear = ref(new Date().getFullYear())
   border-color: var(--color-primary);
   transform: translateY(-2px);
   box-shadow: var(--primary-shadow);
+  color: var(--light-text);
 }
 
 .social-links a {
