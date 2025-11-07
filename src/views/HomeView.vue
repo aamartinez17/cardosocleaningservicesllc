@@ -219,6 +219,34 @@
       </div>
     </section>
 
+    <!-- 6. NEW: Leave a Review CTA -->
+    <section class="leave-review-section py-5" data-aos="fade-up">
+      <div class="container text-center">
+        <h3 class="review-cta-title">Enjoying Our Service?</h3>
+
+        <div class="review-cta-stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p class="review-cta-subtitle">Let us know how we're doing! Your feedback helps us and other customers.</p>
+        
+        <!-- This button links to the ref you created in Step 1 -->
+        <a :href="googleReviewLink" target="_blank" rel="noopener noreferrer" class="btn google-review-button">
+          <!-- Google 'G' Logo SVG -->
+          <svg width="20" height="20" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 12px;">
+            <path d="M17.64 9.20455C17.64 8.56818 17.58 7.95455 17.47 7.36364H9V10.8409H13.84C13.66 11.9773 13.06 12.9318 12.15 13.5682V15.8182H14.95C16.67 14.25 17.64 11.9318 17.64 9.20455Z" fill="#4285F4"/>
+            <path d="M9 18C11.43 18 13.47 17.1818 14.95 15.8182L12.15 13.5682C11.36 14.1136 10.3 14.5 9 14.5C7.02 14.5 5.34 13.1136 4.7 11.3409H1.82V13.6591C3.25 16.3 5.92 18 9 18Z" fill="#34A853"/>
+            <path d="M4.7 11.3409C4.52 10.8 4.41 10.2045 4.41 9.56818C4.41 8.93182 4.52 8.34091 4.7 7.79545V5.47727H1.82C1.26 6.56818 0.9 7.81818 0.9 9.13636C0.9 10.4545 1.26 11.7045 1.82 12.7955L4.7 10.4773V11.3409Z" fill="#FBBC05"/>
+            <path d="M9 4.63636C10.66 4.63636 11.82 5.22727 12.39 5.77273L15.02 3.13636C13.47 1.68182 11.43 0.863636 9 0.863636C5.92 0.863636 3.25 2.56818 1.82 5.47727L4.7 7.79545C5.34 6.02273 7.02 4.63636 9 4.63636Z" fill="#EA4335"/>
+          </svg>
+          Leave a Review on Google
+        </a>
+      </div>
+    </section>
+
     <!-- 7. FAQ Section -->
     <section class="faq-section">
       <div class="container">
@@ -281,7 +309,7 @@
                 </h2>
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    We are based in Harrisonburg, VA (2213 Pearl Ln) and proudly serve the entire **Shenandoah Valley** and surrounding areas.
+                    We are based in Harrisonburg, VA (2213 Pearl Ln) and proudly serve the entire Shenandoah Valley and surrounding areas.
                   </div>
                 </div>
               </div>
@@ -295,7 +323,7 @@
                 </h2>
                 <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    You can call or text us at **(540) 271-3851** or **(540) 476-0348**. You can also click the "Get a Quote" button on our site to fill out a request form directly!
+                    You can call or text us at (540) 271-3851 or (540) 476-0348. You can also click the "Get a Quote" button on our site to fill out a request form directly!
                   </div>
                 </div>
               </div>
@@ -384,6 +412,9 @@ const testimonials = ref([
     rating: 5
   }
 ]);
+
+// TODO: Replace this placeholder with your actual Google review link
+const googleReviewLink = ref('https://g.page/r/YOUR_BUSINESS_ID/review')
 </script>
 
 <style scoped>
@@ -413,15 +444,26 @@ const testimonials = ref([
   margin-bottom: var(--spacing-lg);
 }
 
-/* 1. Hero Section (No changes) */
+/* 1. Hero Section (UPDATED) */
 .hero-section {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-              url('/images/hero-page-image.png') 
-              no-repeat center center;
+  url('/images/hero-page-image.png') 
+  no-repeat center center;
   background-size: cover;
-  padding: 8rem var(--spacing-md);
-  min-height: 70vh;
   color: var(--light-text);
+
+  /* --- NEW / UPDATED STYLES --- */
+
+  /* This calculates 100% of the viewport height MINUS your navbar's height */
+min-height: calc(100vh - var(--top-padding)); 
+
+  /* These 3 lines vertically and horizontally center your content in the new space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* We can remove the old padding, as flex-centering handles it */
+  /* padding: 8rem var(--spacing-md); */ /* <-- REMOVED */
 }
 .hero-title {
   font-size: 3.5rem;
@@ -577,7 +619,7 @@ const testimonials = ref([
   margin-bottom: var(--spacing-sm);
 }
 
-/* 5. NEW: Review Carousel Section */
+/* 6. NEW: Review Carousel Section */
 .review-carousel-section {
   background-color: var(--color-background); /* White */
   /* This is the same dot pattern from your other section */
@@ -613,6 +655,74 @@ const testimonials = ref([
   color: var(--color-primary);
   margin-top: var(--spacing-lg);
   font-size: 1.1rem;
+}
+
+/* 6. NEW: Leave a Review CTA */
+.leave-review-section {
+  background-color: var(--color-background); /* Light grey bg */
+  padding: var(--spacing-lg) 0; /* Tighter padding than other sections */
+  /* border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0; */
+  /* background-color: var(--color-accent); */
+}
+
+.leave-review-section .container {
+  padding: var(--spacing-xl);
+  border: 5px solid var(--color-accent);
+  border-radius: var(--border-radius);
+  /* background-color: var(--bg-primary); */
+/* 
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='75' height='75' viewBox='0 0 75 75'><path fill-opacity='0.3' fill='%23B3B5B8' d='M37.5%2032.5%20L38.5%2036.5%20L42.5%2037.5%20L38.5%2038.5%20L37.5%2042.5%20L36.5%2038.5%20L32.5%2037.5%20L36.5%2036.5%20Z'/></svg>");
+  background-repeat: repeat; */
+}
+
+.review-cta-title {
+  /* Using h3 font size from main.css */
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.review-cta-subtitle {
+  /* Using base font size from main.css */
+  color: var(--secondary-dark-grey);
+  margin-bottom: var(--spacing-lg);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.review-cta-stars {
+  color: #FBBC05; /* This is the standard "Google" gold/yellow color */
+  font-size: 1.5rem; /* ~24px */
+  margin-bottom: var(--spacing-sm); /* Space between stars and subtitle */
+}
+.review-cta-stars i {
+  /* Adds a tiny bit of space between each star */
+  margin: 0 0.15rem;
+}
+
+.google-review-button {
+  background-color: #FFFFFF;
+  border: 1px solid #DADCE0;
+  color: #3C4043;
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  transition: var(--transition-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px 0 rgba(60,64,67,.3), 0 1px 3px 1px rgba(60,64,67,.15);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.google-review-button:hover {
+  box-shadow: 0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
+  border-color: #D2D2D2;
 }
 
 /* 7. FAQ Section */

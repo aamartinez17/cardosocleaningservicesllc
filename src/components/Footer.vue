@@ -76,8 +76,8 @@
             <a href="#" target="_blank" aria-label="Instagram" title="Instagram">
               <i class="bi bi-instagram"></i>
             </a>
-            <a href="#" target="_blank" aria-label="LinkedIn" title="LinkedIn">
-              <i class="bi bi-linkedin"></i>
+            <a href="#" target="_blank" aria-label="Yelp" title="Yelp">
+              <i class="bi bi-yelp"></i>
             </a>
           </div>
         </div>
@@ -93,6 +93,9 @@
       <!-- "Powered by" Link -->
       <span class="powered-by mb-2 mb-md-0">
         Powered by <a href="https://casatech.org" target="_blank" rel="noopener noreferrer">Casatech LLC</a>
+      </span>
+      <span class="powered-by mb-2 mb-md-0">
+        Partnership with <a href="/home" target="_blank" rel="noopener noreferrer">Double R Production</a>
       </span>
       
       <!-- Copyright -->

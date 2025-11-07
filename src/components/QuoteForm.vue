@@ -58,7 +58,7 @@
         <option value="commercial">Commercial Cleaning</option>
         <option value="move-in-out">Move-In / Move-Out</option>
         <option value="construction">New Construction Cleanup</option>
-        <option value="other">Other</option>
+        <option value="other">Other - Special Request</option>
       </select>
     </div>
 

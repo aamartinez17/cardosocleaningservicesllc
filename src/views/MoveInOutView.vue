@@ -98,7 +98,7 @@
     <section class="page-section">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-right">
+          <div class="col-lg-4" data-aos="fade-right">
             <!-- Image Placeholder 2 -->
             <img 
               src="/images/move-in-out-why-us-section.png" 
@@ -106,15 +106,15 @@
               class="img-fluid rounded-image"
             >
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="col-lg-8" data-aos="fade-left" data-aos-delay="100">
             <h2 class="section-title">Focus On Your Move</h2>
             <p>
               Don't lose your security deposit over cleaning, and don't start life in your new home with someone else's mess.
             </p>
             <ul class="checklist">
-              <li><i class="bi bi-check-circle-fill"></i> <strong>For Renters:</strong> Maximize your security deposit return.</li>
-              <li><i class="bi bi-check-circle-fill"></i> <strong>For Homeowners:</strong> Present a beautiful, clean home to potential buyers.</li>
-              <li><i class="bi bi-check-circle-fill"></i> <strong>For New Movers:</strong> Start fresh in a space that is fully sanitized and ready for you.</li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>For Renters:</strong><span>Maximize your security deposit return.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>For Homeowners:</strong><span>Present a beautiful, clean home to potential buyers.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>For New Movers:</strong><span>Start fresh in a space that is fully sanitized and ready for you.</span></li>
             </ul>
           </div>
         </div>
@@ -219,6 +219,10 @@ const openDrawer = inject('openQuoteDrawer');
   margin-bottom: var(--spacing-sm);
   display: flex;
   align-items: flex-start;
+  align-items: baseline;
+}
+.checklist li span {
+  margin-left: 1rem;
 }
 .checklist li i {
   color: var(--color-accent);

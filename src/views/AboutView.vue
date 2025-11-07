@@ -11,7 +11,7 @@
     <section class="page-section">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-right">
+          <div class="col-xxl-6" data-aos="fade-right">
             <h2 class="section-title">Our Story</h2>
             <p class="section-subtitle">
               Serving the Shenandoah Valley Since 2022.
@@ -40,7 +40,7 @@
               Get Your Free Estimate
             </button>
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="mt-5 col-xxl-6" data-aos="fade-left" data-aos-delay="100">
             <!-- Image Placeholder 1 -->
             <img 
               src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Maria+Cardoso+(Founder)" 

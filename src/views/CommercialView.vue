@@ -20,7 +20,7 @@
               A clean and sanitary environment is essential for the health of your employees and the confidence of your customers. Cardoso Cleaning Services provides reliable, bonded, and insured cleaning solutions for businesses throughout the Shenandoah Valley.
             </p>
             <p>
-              We understand that every business is different. We'll work with you to create a customized cleaning schedule—whether it's daily, weekly, or bi-weekly—that fits your needs and budget.
+              We understand that every business is different. We'll work with you to create a customized cleaning schedule, whether it's daily, weekly, or bi-weekly, that fits your needs and budget.
             </p>
             <button @click="openDrawer" class="btn cta-button-page">
               Get Your Commercial Quote

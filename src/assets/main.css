@@ -1,29 +1,89 @@
+/* Import CSS Variables first so they can be used throughout */
 @import './_variables.css';
+
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Lato:wght@300;400;700&display=swap');
+
+/* --- Base Global Styles --- */
 
 html, body {
   background-color: var(--bg-primary);
   color: var(--color-text-light);
   font-family: var(--font-family-body);
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevents horizontal scrollbars from animations */
+  
+  /* SCALING BASE FONT SIZE
+    clamp(MIN, PREFERRED, MAX)
+    - Minimum: 1rem (16px) on small mobile
+    - Preferred: 1rem + 0.25% of viewport width (scales slowly)
+    - Maximum: 1.2rem (approx 19px) on huge screens
+  */
+  font-size: clamp(1rem, 1rem + 0.25vw, 1.2rem);
+  line-height: 1.6;
 }
+
+/* --- Responsive Typography --- */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-headings);
   color: var(--color-primary);
+  line-height: 1.2;
 }
 
+h1 {
+  /* Hero Titles: Scale significantly from 2.5rem (40px) up to 4.5rem (72px) */
+  font-size: clamp(2.5rem, 2rem + 3vw, 4.5rem);
+}
+
+h2 {
+  /* Section Titles: Scale from 2rem (32px) up to 3rem (48px) */
+  font-size: clamp(2rem, 1.8rem + 2vw, 3rem);
+}
+
+h3 {
+  /* Card Titles: Scale slightly from 1.5rem (24px) up to 2rem (32px) */
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+/* --- Global Utility Classes --- */
+
 section {
-  overflow: hidden;
+  overflow: hidden; /* Keeps AOS animations from causing scrollbars */
   width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Swiper.js Global Overrides --- */
+/* These need to be global to override Swiper's default styles */
+
+:root {
+  /* Sets Swiper's internal variables to match your brand */
+  --swiper-navigation-color: var(--color-primary);
+  --swiper-pagination-color: var(--color-accent);
 }
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   opacity: 0.7;
+  transition: opacity 0.3s ease;
 }
 
-/* This styles the pagination dots */
+/* Ensures the active pagination dot uses your accent color */
 .swiper-pagination-bullet-active {
   background-color: var(--color-accent) !important;
+  opacity: 1 !important;
+}
+
+/* Makes inactive dots slightly visible but in your primary color family */
+.swiper-pagination-bullet {
+  background-color: var(--color-primary);
+  opacity: 0.3;
 }

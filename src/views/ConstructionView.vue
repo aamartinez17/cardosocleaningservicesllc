@@ -98,7 +98,7 @@
     <section class="page-section">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-6" data-aos="fade-right">
+          <div class="col-lg-4" data-aos="fade-right">
             <!-- Image Placeholder 2 -->
             <img 
               src="/images/new-construction-why-us-section.png" 
@@ -106,15 +106,15 @@
               class="img-fluid rounded-image"
             >
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="col-lg-8" data-aos="fade-left" data-aos-delay="100">
             <h2 class="section-title">Ready for Showcase</h2>
             <p>
               Our goal is to make your new property shine. We meticulously remove fine dust from every surface, crack, and crevice.
             </p>
             <ul class="checklist">
-              <li><i class="bi bi-check-circle-fill"></i> <strong>For Builders:</strong> Impress your clients with a perfectly clean handoff.</li>
-              <li><i class="bi bi-check-circle-fill"></i> <strong>For Homeowners:</strong> Move into your new space without worrying about dust or debris.</li>
-              <li><i class="bi bi-check-circle-fill"></i> <strong>Flexible & Reliable:</strong> We work with your project timelines.</li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>For Builders:</strong><span>Impress your clients with a perfectly clean handoff.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>For Homeowners:</strong><span>Move into your new space without worrying about dust or debris.</span></li>
+              <li><i class="bi bi-check-circle-fill"></i> <strong>Flexible & Reliable:</strong><span>We work with your project timelines.</span></li>
             </ul>
           </div>
         </div>
@@ -219,6 +219,11 @@ const openDrawer = inject('openQuoteDrawer');
   margin-bottom: var(--spacing-sm);
   display: flex;
   align-items: flex-start;
+  align-items: baseline;
+}
+
+.checklist li span {
+  margin-left: 1rem;
 }
 .checklist li i {
   color: var(--color-accent);
