@@ -3,11 +3,20 @@
     
     <!-- 1. Hero Section -->
     <header class="hero-section">
-      <div class="container text-center">
-        <h1 class="hero-title" data-aos="fade-up">
+      <div class="container">
+        <div class="row">
+      <div class="col-lg-6" data-aos="fade-right">
+        <img 
+          src="/logos/Cardoso Cleaning Services LLC LOGO.png" 
+          alt="Cardoso Cleaning Services LLC Logo" 
+          class="hero-img"
+        >
+      </div>
+      <div class="text-center pt-5 col-lg-6 m-auto pt-lg-0">
+        <h1 class="hero-title" data-aos="fade-left">
           Spotless Spaces, Brighter Lives
         </h1>
-        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+        <p class="hero-subtitle" data-aos="fade-left" data-aos-delay="300">
           Professional residential and commercial cleaning in Harrisonburg.
         </p>
         <!-- 
@@ -17,11 +26,13 @@
         <button
           @click="openDrawer"
           class="btn cta-button-hero"
-          data-aos="fade-up"
-          data-aos-delay="200"
+          data-aos="fade-left"
+          data-aos-delay="600"
         >
           Get a Free Quote
         </button>
+        </div>
+      </div>
       </div>
     </header>
 
@@ -144,6 +155,7 @@
 
     <!-- 5. Why Choose Us / Trust Section -->
     <section class="why-choose-us-section">
+      <div class="why-choose-us-section-background">
       <div class="container">
         <h2 class="section-title text-center" data-aos="fade-up">A Service You Can Trust</h2>
         <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">
@@ -183,6 +195,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
 
@@ -446,8 +459,14 @@ const googleReviewLink = ref('https://g.page/r/YOUR_BUSINESS_ID/review')
 
 /* 1. Hero Section (UPDATED) */
 .hero-section {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-  url('/images/hero-page-image.png') 
+  /* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  */
+  background: linear-gradient(90deg,rgba(68, 48, 145,1) 0%,
+   rgba(68, 48, 145, .5) 20%,
+   rgba(64, 118, 167, .5) 49%, 
+   rgba(62, 165, 183, .5) 66%,
+   rgba(61, 182, 188, .5) 80%,
+   rgba(61, 182, 188, 1) 100%),
+   url('/images/hero-page-image.png') 
   no-repeat center center;
   background-size: cover;
   color: var(--light-text);
@@ -455,7 +474,7 @@ const googleReviewLink = ref('https://g.page/r/YOUR_BUSINESS_ID/review')
   /* --- NEW / UPDATED STYLES --- */
 
   /* This calculates 100% of the viewport height MINUS your navbar's height */
-min-height: calc(100vh - var(--top-padding)); 
+  min-height: calc(100vh - var(--top-padding)); 
 
   /* These 3 lines vertically and horizontally center your content in the new space */
   display: flex;
@@ -465,6 +484,15 @@ min-height: calc(100vh - var(--top-padding));
   /* We can remove the old padding, as flex-centering handles it */
   /* padding: 8rem var(--spacing-md); */ /* <-- REMOVED */
 }
+
+.hero-img {
+  width: 100%;
+  margin: auto;
+  background-color: var(--bg-primary);
+  border-radius: var(--border-radius);
+  padding-right: 15px;
+}
+
 .hero-title {
   font-size: 3.5rem;
   font-weight: var(--font-weight-bold);
@@ -475,6 +503,16 @@ min-height: calc(100vh - var(--top-padding));
   margin-bottom: var(--spacing-lg);
   font-weight: var(--font-weight-light);
 }
+.hero-section .cta-button-hero {
+  background-color: var(--color-primary);
+}
+
+.hero-section .cta-button-hero:hover {
+  color: var(--color-accent);
+}
+
+
+
 .cta-button-hero {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
@@ -525,13 +563,13 @@ min-height: calc(100vh - var(--top-padding));
   min-height: 48px; 
 }
 .service-link {
-  color: var(--color-primary);
+  color: var(--color-accent);
   font-weight: var(--font-weight-bold);
   text-decoration: none;
   transition: var(--transition-color);
 }
 .service-link:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
   text-decoration: underline;
 }
 
@@ -592,8 +630,31 @@ min-height: calc(100vh - var(--top-padding));
 
 
 /* 5. Why Choose Us / Trust Section */
-.why-choose-us-section {
-  background-color: var(--color-background); /* White background */
+/* .why-choose-us-section  { */
+  /* background-color: black; */
+  /* background-color: var(--color-background); */
+  /* background-image: url("/logos/Cardoso Cleaning Services LLC LOGO.png");
+  background-size:contain; */
+/* } */
+
+ .why-choose-us-section .why-choose-us-section-background{
+  position: relative;
+  background-color: var(--color-background);
+  background-image: url("/logos/Cardoso Cleaning Services LLC LOGO.png");
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position: center center;
+
+}
+
+.why-choose-us-section .why-choose-us-section-background::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, .95); /* Black overlay with 50% opacity */
 }
 .trust-card {
   text-align: center;
@@ -636,7 +697,7 @@ min-height: calc(100vh - var(--top-padding));
   background-color: var(--color-background);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  border-top: 5px solid var(--color-accent);
+  border-top: 5px solid var(--color-primary);
 }
 .review-stars {
   color: var(--color-accent);

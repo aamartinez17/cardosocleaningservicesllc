@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" ref="navRef">
-    <div class="container">
+    <div class="container p-0 my-0">
       
       <!-- Logo / Brand Link -->
-      <router-link class="navbar-brand" to="/">
+      <router-link class="navbar-brand p-0" to="/">
         <img 
           src="/logos/Cardoso Cleaning Services LLC LOGO.png" 
           alt="Cardoso Cleaning Services LLC Logo" 
@@ -184,13 +184,13 @@ watch(isDrawerOpen, (isOpen) => {
 .navbar {
   background-color: var(--color-background);
   box-shadow: var(--box-shadow);
-  padding-top: var(--spacing-sm);
-  padding-bottom: var(--spacing-sm);
+  /* padding-top: var(--spacing-sm);
+  padding-bottom: var(--spacing-sm); */
   min-height: var(--top-padding);
 }
 
 .navbar-logo {
-  height: 60px;
+  height: 70px;
   width: auto;
 }
 

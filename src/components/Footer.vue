@@ -92,10 +92,10 @@
       
       <!-- "Powered by" Link -->
       <span class="powered-by mb-2 mb-md-0">
-        Powered by <a href="https://casatech.org" target="_blank" rel="noopener noreferrer">Casatech LLC</a>
+        Powered by <a href="https://casatechllc.com" target="_blank" rel="noopener noreferrer">Casatech LLC</a>
       </span>
       <span class="powered-by mb-2 mb-md-0">
-        Partnership with <a href="/home" target="_blank" rel="noopener noreferrer">Double R Production</a>
+        Partnership with <a href="https://linktr.ee/doble_r" target="_blank" rel="noopener noreferrer">Double R Production</a>
       </span>
       
       <!-- Copyright -->
@@ -130,9 +130,12 @@ const currentYear = ref(new Date().getFullYear())
 }
 
 .footer-logo {
-  height: 60px; /* Same as navbar */
+  display: block;
+  height: 150px; /* Same as navbar */
   width: auto;
   margin-bottom: var(--spacing-md);
+  margin: auto;
+
 }
 
 .footer-blurb {

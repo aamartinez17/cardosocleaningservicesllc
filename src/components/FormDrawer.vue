@@ -65,7 +65,7 @@ const closeDrawer = () => {
   top: 0;
   right: 0;
   width: 90%; /* Responsive width for mobile */
-  max-width: 480px; /* Max width on desktop */
+  max-width: 600px; /* Max width on desktop */
   height: 100vh;
   background-color: var(--color-background);
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);

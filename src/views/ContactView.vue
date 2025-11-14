@@ -9,8 +9,16 @@
 
     <!-- 2. Main Content Section (Info + Form) -->
     <section class="page-section">
-      <div class="container">
+      <div class="container-fluid px-5">
         <div class="row">
+
+          <!-- Column 2: Contact Form (Reused) -->
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+            <div class="form-container">
+              <!-- We are re-using the same quote form component -->
+              <QuoteForm />
+            </div>
+          </div>
           
           <!-- Column 1: Contact Info -->
           <div class="col-lg-6" data-aos="fade-right">
@@ -24,7 +32,7 @@
                 <i class="bi bi-geo-alt-fill"></i>
                 <div class="info-text">
                   <strong>Our Location</strong>
-                  <span>2213 Pearl Ln, Harrisonburg VA 22801</span>
+                  <span>Harrisonburg VA 22801</span>
                 </div>
               </div>
               <div class="info-item">
@@ -44,21 +52,9 @@
                 </div>
               </div>
             </div>
-          </div>
-          
-          <!-- Column 2: Contact Form (Reused) -->
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
-            <div class="form-container">
-              <!-- We are re-using the same quote form component -->
-              <QuoteForm />
-            </div>
-          </div>
 
-        </div>
-      </div>
-    </section>
 
-    <!-- 3. NEW: Service Area List -->
+            <!-- 3. NEW: Service Area List -->
     <section class="service-area-section">
       <div class="container">
         <h2 class="section-title text-center">Proudly Serving the Shenandoah Valley</h2>
@@ -71,7 +67,7 @@
           <div 
             v-for="(column, colIndex) in townColumns" 
             :key="colIndex" 
-            class="col-lg-3 col-md-4 col-sm-6"
+            class="col-lg-4 col-md-4 col-sm-6"
           >
             <ul class="town-list">
               <li v-for="town in column" :key="town" data-aos="fade-up" :data-aos-delay="towns.indexOf(town) * 20">
@@ -100,6 +96,13 @@
         ></iframe>
       </div>
     </section>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    
 
   </div>
 </template>
@@ -111,26 +114,24 @@ import QuoteForm from '@/components/QuoteForm.vue';
 
 // --- NEW: Town List Logic ---
 const towns = ref([
-  'Bridgewater',
-  'Dayton',
-  'Elkton',
-  'Grottoes',
-  'Massanutten',
-  'Staunton',
-  'Waynesboro',
-  'Woodstock',
-  'New Market',
-  'Broadway',
-  'Timberville',
-  'Luray',
-  'Shenandoah',
-  'Stanley',
-  'Verona',
-  'Mount Crawford',
-  'Weyers Cave',
-  'Fishersville',
-  'Stuarts Draft',
-  'Mount Solon'
+  'Harrisonburg, VA',
+  'Bridgewater, VA',
+  'Elkton, VA',
+  'Woodstock, VA',
+  'Strasburg, VA',
+  'Mount Jackson, VA',
+  'Staunton, VA',
+  'Waynesboro, VA',
+  'Fishersville, VA',
+  'Lovingston, VA',
+  'Nellysford, VA',
+  'Afton, VA',
+  'Luray, VA',
+  'Stanley, VA',
+  'Shenandoah, VA',
+  'Charlottesville, VA',
+  'Crozet, VA',
+  'Scottsville, VA'
 ]);
 
 // Automatically creates 4 columns from the towns list
@@ -139,7 +140,7 @@ const townColumns = computed(() => {
   let colIndex = 0;
   towns.value.forEach(town => {
     columns[colIndex].push(town);
-    colIndex = (colIndex + 1) % 4; // Cycles from 0 to 3
+    colIndex = (colIndex + 1) % 3; // Cycles from 0 to 3
   });
   return columns;
 });
