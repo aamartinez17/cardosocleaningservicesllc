@@ -95,7 +95,7 @@
         Powered by <a href="https://casatechllc.com" target="_blank" rel="noopener noreferrer">Casatech LLC</a>
       </span>
       <span class="powered-by mb-2 mb-md-0">
-        Partnership with <a href="https://linktr.ee/doble_r" target="_blank" rel="noopener noreferrer">Double R Production</a>
+        Partnership with <a href="https://linktr.ee/doble_r" target="_blank" rel="noopener noreferrer">Doble R Production</a>
       </span>
       
       <!-- Copyright -->
