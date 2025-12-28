@@ -313,10 +313,44 @@ const decreasePetCount = (pet) => {
 };
 
 // --- Form Submission ---
-const handleSubmit = () => {
-  console.log('Form data submitted:', JSON.parse(JSON.stringify(formData.value)));
-  alert('Thank you! Your quote request has been sent.');
-  formData.value = getInitialFormData();
+const handleSubmit = async () => {
+  // Ensure grecaptcha is loaded
+  if (typeof grecaptcha === 'undefined') {
+    alert('reCAPTCHA has not loaded. Please refresh the page.');
+    return;
+  }
+
+  grecaptcha.ready(() => {
+    grecaptcha.execute('6LeAqjksAAAAAKsAYnO351IMfO-1BzHRYh8Ltdgt', { action: 'submit_quote' }).then(async (token) => {
+      try {
+        // Add the token to your form data
+        const payload = {
+          ...formData.value,
+          recaptchaToken: token
+        };
+
+        const response = await fetch('/.netlify/functions/send-emails', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (response.ok) {
+          alert('Thank you! Your quote request has been sent.');
+          formData.value = getInitialFormData();
+        } else {
+          const err = await response.json();
+          if (err.message === 'RECAPTCHA_FAILED') {
+            alert('Security check failed. Please try again.');
+          } else {
+            alert('Something went wrong. Please try again later.');
+          }
+        }
+      } catch (error) {
+        console.error('Submission error:', error);
+      }
+    });
+  });
 };
 </script>
 

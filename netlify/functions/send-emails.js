@@ -27,25 +27,62 @@ export const handler = async (event) => {
       body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${data.recaptchaToken}`,
     });
     
-    const recaptchaResult = await recaptchaResponse.json();
-    const THRESHOLD = 0.5; // Google recommends 0.5 as default for v3
+     const recaptchaResult = await recaptchaResponse.json();
+    
+    console.log('--- reCAPTCHA Debug ---');
+    console.log('Success:', recaptchaResult.success);
+    console.log('Score:', recaptchaResult.score); 
+    console.log('Error Codes:', recaptchaResult['error-codes']);
 
-    if (!recaptchaResult.success || recaptchaResult.score < THRESHOLD) {
-      console.warn(`Bot detected. Score: ${recaptchaResult.score}`);
-      return {
-        statusCode: 403,
-        body: JSON.stringify({ message: 'RECAPTCHA_FAILED' }),
-      };
+    /**
+     * LOCAL TESTING BYPASS
+     * If you are running via 'netlify dev' (localhost), Google often fails v3 checks.
+     * We check if we are in a local environment to allow the email to send during dev.
+     */
+    const isLocal = event.headers.host && event.headers.host.includes('localhost');
+    const THRESHOLD = 0.3;
+
+    // Reject only if:
+    // 1. It's NOT local AND
+    // 2. (Result failed OR score is below threshold)
+    if (!isLocal) {
+      if (!recaptchaResult.success || (recaptchaResult.score !== undefined && recaptchaResult.score < THRESHOLD)) {
+        return {
+          statusCode: 403,
+          body: JSON.stringify({ 
+            message: 'RECAPTCHA_FAILED',
+            details: recaptchaResult['error-codes']
+          }),
+        };
+      }
+    } else {
+      console.log('Local environment detected: Bypassing strict reCAPTCHA score check for testing.');
     }
 
-    // === 2. SETUP NODEMAILER ===
+       // === 2. CREDENTIAL SANITIZATION & LOGGING ===
+    // We trim them to remove accidental spaces/newlines from .env files
+    const emailUser = (process.env.EMAIL_USER || "").trim();
+    const emailPass = (process.env.EMAIL_PASS || "").trim();
+    const logoUrl = "https://cardosocleaningservicesllc.netlify.app/logos/Cardoso-Cleaning-Services-LLC-LOGO.png";
+
+
+    // Debugging logs (Safe: won't show your password, only if they exist)
+    console.log('--- Credential Check ---');
+    console.log('EMAIL_USER defined:', !!emailUser, emailUser ? `(Length: ${emailUser.length})` : '(Empty)');
+    console.log('EMAIL_PASS defined:', !!emailPass, emailPass ? `(Length: ${emailPass.length})` : '(Empty)');
+
+    if (!emailUser || !emailPass) {
+      throw new Error('EMAIL_USER or EMAIL_PASS is missing or empty in environment variables.');
+    }
+
+    // === 3. SETUP NODEMAILER ===
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 465,
-      secure: true, // Use SSL
+      secure: true, 
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS, // 16-character App Password
+        user: emailUser,
+        pass: emailPass,
       },
     });
 
@@ -100,17 +137,20 @@ export const handler = async (event) => {
       subject: 'We Received Your Quote Request - Cardoso Cleaning Services LLC',
       html: `
         <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333; line-height: 1.6; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
-          <div style="background-color: #f8f9fa; padding: 30px; text-align: center; border-bottom: 3px solid #007bff;">
-            <h1 style="margin: 0; color: #2c3e50; font-size: 24px;">Quote Request Received</h1>
-            <p style="margin: 5px 0 0; color: #6c757d; font-style: italic;">Cardoso Cleaning Services LLC</p>
+          <div style="background-color: #ffffff; padding: 20px; text-align: center; border-bottom: 1px solid #eee;">
+            <img src="${logoUrl}" alt="Cardoso Cleaning Services LLC" style="max-width: 200px; height: auto;" onerror="this.style.display='none'">
+            <h2 style="margin: 10px 0 0; color: #3DB6BC; font-size: 20px;">Cardoso Cleaning Services LLC</h2>
+          </div>
+          <div style="background-color: #443091; color: white; padding: 15px; text-align: center;">
+            <h1 style="margin: 0; font-size: 22px;">Request Received!</h1>
           </div>
           
           <div style="padding: 30px;">
             <p>Hi <strong>${data.name}</strong>,</p>
             <p>Thank you for choosing <strong>Cardoso Cleaning Services LLC</strong>! This is an automated confirmation that we have received your request for a free estimate.</p>
             
-            <div style="background-color: #f1f8ff; border-left: 4px solid #007bff; padding: 20px; margin: 25px 0;">
-              <h3 style="margin-top: 0; color: #007bff; font-size: 18px;">Summary of Request:</h3>
+            <div style="background-color: #f1f8ff; border-left: 4px solid #443091; padding: 20px; margin: 25px 0;">
+              <h3 style="margin-top: 0; color: #3DB6BC; font-size: 18px;">Summary of Request:</h3>
               <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
                 <tr><td style="padding: 5px 0; color: #666;">Service:</td><td><strong>${data.service.replace('-', ' ')}</strong></td></tr>
                 <tr><td style="padding: 5px 0; color: #666;">Frequency:</td><td><strong>${data.frequency}</strong></td></tr>
@@ -118,7 +158,7 @@ export const handler = async (event) => {
               </table>
             </div>
 
-            <p><strong>What’s Next?</strong></p>
+            <p><strong>What's Next?</strong></p>
             <p>A member of our team will review your details and contact you at <strong>${data.phone}</strong> shortly. Depending on the size of the project, we may provide a preliminary estimate or schedule a brief walk-through of your home.</p>
             
             <p>If you have any urgent questions or need to update your details, simply reply to this email or call us directly.</p>

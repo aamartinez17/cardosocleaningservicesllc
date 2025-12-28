@@ -7,8 +7,8 @@
         <div class="row">
       <div class="col-lg-6" data-aos="fade-right">
         <img 
-          src="/logos/Cardoso Cleaning Services LLC LOGO.png" 
-          alt="Cardoso Cleaning Services LLC Logo" 
+          src="/logos/Cardoso-Cleaning-Services-LLC-LOGO.png" 
+          alt="Cardoso-Cleaning-Services-LLC-LOGO" 
           class="hero-img"
         >
       </div>
@@ -91,7 +91,6 @@
     </section>
 
     <!-- 5. NEW: Review Carousel Section -->
-    <ClientOnly>
     <section class="review-carousel-section">
       <div class="container" data-aos="fade-up">
         <h2 class="section-title text-center">What Our Clients Say</h2>
@@ -123,8 +122,6 @@
         </swiper>
       </div>
     </section>
-  </ClientOnly>
-
     <!-- 3. How It Works Section -->
     <section class="how-it-works-section">
       <div class="container">
@@ -640,14 +637,14 @@ const googleReviewLink = ref('https://g.page/r/YOUR_BUSINESS_ID/review')
 /* .why-choose-us-section  { */
   /* background-color: black; */
   /* background-color: var(--color-background); */
-  /* background-image: url("/logos/Cardoso Cleaning Services LLC LOGO.png");
+  /* background-image: url("/logos/Cardoso-Cleaning-Services-LLC-LOGO.png");
   background-size:contain; */
 /* } */
 
  .why-choose-us-section .why-choose-us-section-background{
   position: relative;
   background-color: var(--color-background);
-  background-image: url("/logos/Cardoso Cleaning Services LLC LOGO.png");
+  background-image: url("/logos/Cardoso-Cleaning-Services-LLC-LOGO.png");
   background-size:contain;
   background-repeat:no-repeat;
   background-position: center center;

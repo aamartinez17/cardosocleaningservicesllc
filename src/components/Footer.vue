@@ -8,7 +8,7 @@
         <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
           <router-link to="/">
             <img 
-              src="/logos/Cardoso Cleaning Services LLC LOGO.png" 
+              src="/logos/Cardoso-Cleaning-Services-LLC-LOGO.png" 
               alt="Cardoso Cleaning Services Logo" 
               class="footer-logo"
             >

@@ -5,8 +5,8 @@
       <!-- Logo / Brand Link -->
       <router-link class="navbar-brand p-0" to="/">
         <img 
-          src="/logos/Cardoso Cleaning Services LLC LOGO.png" 
-          alt="Cardoso Cleaning Services LLC Logo" 
+          src="/logos/Cardoso-Cleaning-Services-LLC-LOGO.png" 
+          alt="Cardoso-Cleaning-Services-LLC-LOGO" 
           class="navbar-logo"
         >
       </router-link>
