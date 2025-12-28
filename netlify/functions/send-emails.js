@@ -98,7 +98,7 @@ export const handler = async (event) => {
 
     // === 3. SEND NOTIFICATION TO ADMIN (You) ===
     await transporter.sendMail({
-      from: `"Quote System" <${process.env.EMAIL_USER}>`,
+      from: `"Website" <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER,
       replyTo: `"${data.name}" <${data.email}>`,
       subject: `[New Quote Request] ${data.name} - ${data.service}`,
@@ -139,9 +139,9 @@ export const handler = async (event) => {
         <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333; line-height: 1.6; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #ffffff; padding: 20px; text-align: center; border-bottom: 1px solid #eee;">
             <img src="${logoUrl}" alt="Cardoso Cleaning Services LLC" style="max-width: 200px; height: auto;" onerror="this.style.display='none'">
-            <h2 style="margin: 10px 0 0; color: #3DB6BC; font-size: 20px;">Cardoso Cleaning Services LLC</h2>
+            <h2 style="margin: 10px 0 0; color: #443091; font-size: 20px;">Cardoso Cleaning Services LLC</h2>
           </div>
-          <div style="background-color: #443091; color: white; padding: 15px; text-align: center;">
+          <div style="background-color: #3DB6BC; color: white; padding: 15px; text-align: center;">
             <h1 style="margin: 0; font-size: 22px;">Request Received!</h1>
           </div>
           
@@ -149,8 +149,8 @@ export const handler = async (event) => {
             <p>Hi <strong>${data.name}</strong>,</p>
             <p>Thank you for choosing <strong>Cardoso Cleaning Services LLC</strong>! This is an automated confirmation that we have received your request for a free estimate.</p>
             
-            <div style="background-color: #f1f8ff; border-left: 4px solid #443091; padding: 20px; margin: 25px 0;">
-              <h3 style="margin-top: 0; color: #3DB6BC; font-size: 18px;">Summary of Request:</h3>
+            <div style="background-color: #f1f8ff; border-left: 4px solid #3DB6BC; padding: 20px; margin: 25px 0;">
+              <h3 style="margin-top: 0; color: #443091; font-size: 18px;">Summary of Request:</h3>
               <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
                 <tr><td style="padding: 5px 0; color: #666;">Service:</td><td><strong>${data.service.replace('-', ' ')}</strong></td></tr>
                 <tr><td style="padding: 5px 0; color: #666;">Frequency:</td><td><strong>${data.frequency}</strong></td></tr>
