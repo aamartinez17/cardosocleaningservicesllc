@@ -90,6 +90,41 @@
       </div>
     </section>
 
+    <!-- 5. NEW: Review Carousel Section -->
+    <ClientOnly>
+    <section class="review-carousel-section">
+      <div class="container" data-aos="fade-up">
+        <h2 class="section-title text-center">What Our Clients Say</h2>
+        <p class="section-subtitle text-center">
+          We're proud to build lasting relationships in our community.
+        </p>
+        
+        <swiper
+          :modules="swiperModules"
+          :slides-per-view="1"
+          :space-between="30"
+          :navigation="true"
+          :pagination="{ clickable: true }"
+          :autoplay="{
+            delay: 7000,
+            disableOnInteraction: false,
+          }"
+          :loop="true"
+        >
+          <swiper-slide v-for="(review, index) in testimonials" :key="index">
+            <div class="review-card">
+              <div class="review-stars">
+                <i v-for="n in review.rating" :key="n" class="bi bi-star-fill"></i>
+              </div>
+              <p class="review-quote">"{{ review.quote }}"</p>
+              <h4 class="review-name">- {{ review.name }}</h4>
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+    </section>
+  </ClientOnly>
+
     <!-- 3. How It Works Section -->
     <section class="how-it-works-section">
       <div class="container">
@@ -196,39 +231,6 @@
           </div>
         </div>
       </div>
-      </div>
-    </section>
-
-    <!-- 5. NEW: Review Carousel Section -->
-    <section class="review-carousel-section">
-      <div class="container" data-aos="fade-up">
-        <h2 class="section-title text-center">What Our Clients Say</h2>
-        <p class="section-subtitle text-center">
-          We're proud to build lasting relationships in our community.
-        </p>
-        
-        <swiper
-          :modules="swiperModules"
-          :slides-per-view="1"
-          :space-between="30"
-          :navigation="true"
-          :pagination="{ clickable: true }"
-          :autoplay="{
-            delay: 5000,
-            disableOnInteraction: false,
-          }"
-          :loop="true"
-        >
-          <swiper-slide v-for="(review, index) in testimonials" :key="index">
-            <div class="review-card">
-              <div class="review-stars">
-                <i v-for="n in review.rating" :key="n" class="bi bi-star-fill"></i>
-              </div>
-              <p class="review-quote">"{{ review.quote }}"</p>
-              <h4 class="review-name">- {{ review.name }}</h4>
-            </div>
-          </swiper-slide>
-        </swiper>
       </div>
     </section>
 
@@ -410,18 +412,23 @@ const swiperModules = [Navigation, Pagination, Autoplay];
 // Mock testimonial data (you can replace this with real reviews)
 const testimonials = ref([
   {
-    name: 'Sarah K., Harrisonburg',
-    quote: 'Cardoso Cleaning is a lifesaver! I come home to a spotless house every other week. Their team is professional, trustworthy, and incredibly thorough. I highly recommend them!',
+    name: 'Brad Cohen, Founder of Connexa Real Estate',
+    quote: "I highly recommend Cardoso's Cleaning Services. Their consistency, quality, and service make them a standout choice.",
     rating: 5
   },
   {
-    name: 'Mike P., Rockingham Co.',
-    quote: 'We use them for our commercial space, and the difference is night and day. Maria is responsive, and the crew is reliable. Our office has never been cleaner. Great for business.',
+    name: 'Bradlee Blosser, Project and Contracts Coordinator with Nielsen Builders, Inc',
+    quote: 'Working with this team has made our transition between cleaning companies completely seamless',
     rating: 5
   },
   {
-    name: 'Emily R., Harrisonburg',
-    quote: 'They handled our move-out clean, and I am so thankful we hired them. The place looked better than when we moved in, and we got our full security deposit back!',
+    name: 'Cindy Roberts, Home Owner, Staunton, Virginia',
+    quote: 'Maria and her cleaning team are wonderful! They are thorough, doing all those cleaning chores I do not enjoy',
+    rating: 5
+  },
+  {
+    name: 'Jenny Wetsel, General Manager, Valley Fitness Harrisonburg',
+    quote: 'If you need reliable, hardworking people to take care of your place, Cardoso Cleaning is the way to go!',
     rating: 5
   }
 ]);

@@ -11,7 +11,7 @@
     <section class="page-section">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-xxl-6" data-aos="fade-right">
+          <div class="col-xxl-12" data-aos="fade-right">
             <h2 class="section-title">Our Story</h2>
             <p class="section-subtitle">
               Serving the Shenandoah Valley Since 2022.
@@ -40,14 +40,13 @@
               Get Your Free Estimate
             </button>
           </div>
-          <div class="mt-5 col-xxl-6" data-aos="fade-left" data-aos-delay="100">
-            <!-- Image Placeholder 1 -->
+          <!-- <div class="mt-5 col-xxl-6" data-aos="fade-left" data-aos-delay="100">
             <img 
               src="https://placehold.co/600x450/3DB6BC/FFFFFF?text=Maria+Cardoso+(Founder)" 
               alt="Maria Cardoso, Founder of Cardoso Cleaning" 
               class="img-fluid rounded-image"
             >
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -95,36 +94,29 @@
       </div>
     </section>
 
-    <!-- 4. "How It Works" Section (Reused from Home) -->
-    <section class="page-section">
+    <!-- 4. Testimonials Section -->
+    <section class="testimonials-section page-section">
       <div class="container">
-        <h2 class="section-title text-center" data-aos="fade-up">Our Simple Process</h2>
-        <div class="row text-center">
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="step-card">
-              <div class="step-number">1</div>
-              <h3 class="step-title">Get a Quote</h3>
-              <p>Contact us for a free, no-obligation estimate tailored to your needs.</p>
-            </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="step-card">
-              <div class="step-number">2</div>
-              <h3 class="step-title">We Clean</h3>
-              <p>Our professional, insured team arrives on time and gets the job done right.</p>
-            </div>
-          </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="step-card">
-              <div class="step-number">3</div>
-              <h3 class="step-title">You Relax</h3>
-              <p>Enjoy your spotless space and the peace of mind that comes with it.</p>
+        <h2 class="section-title text-center" data-aos="fade-up">Hear From Our Community</h2>
+        <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">
+          We pride ourselves on the relationships we build with local families and businesses.
+        </p>
+
+        <div class="row g-4">
+          <div v-for="(item, index) in testimonials" :key="index" class="col-lg-6" data-aos="fade-up" :data-aos-delay="index * 100">
+            <div class="testimonial-card">
+              <i class="bi bi-quote testimonial-quote-icon"></i>
+              <h4 v-if="item.title" class="testimonial-card-title">{{ item.title }}</h4>
+              <p class="testimonial-text">{{ item.text }}</p>
+              <div class="testimonial-author">
+                <span class="author-name">{{ item.name }}</span>
+                <span class="author-role">{{ item.role }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
 
     <!-- 5. Final CTA -->
     <section class="final-cta-section">
@@ -149,6 +141,30 @@ import { inject } from 'vue';
 
 // Inject the function to open the quote drawer
 const openDrawer = inject('openQuoteDrawer');
+
+const testimonials = [
+  {
+    name: 'Brad Cohen',
+    role: 'Founder of Connexa Real Estate',
+    text: "As a local realtor in Harrisonburg, it is incredibly hard to find a cleaning company that is consistently reliable, responsive, and detail oriented. My experience with Cardoso's Cleaning Services in Harrisonburg, Virginia has been exceptional. Maria and her team were quick to respond, easy to schedule with, and immediately impressed me with their professionalism. Their attention to detail shows in every room they touch. The cleaning was thorough, thoughtful, and far exceeded the standard surface-level work I often see. They made the home feel genuinely refreshed and ready to show. The team is friendly, dependable, and truly trustworthy. It is clear they take pride in their work and treat every property with care, which is invaluable in my line of business. If you are looking for professional cleaning services in Harrisonburg, I highly recommend Cardoso's Cleaning Services. Their consistency, quality, and service make them a standout choice."
+  },
+  {
+    name: 'Jenny Wetsel',
+    role: 'General Manager, Valley Fitness Harrisonburg',
+    title: '"Highly Recommend Cardoso Cleaning Services!"',
+    text: "At Valley Fitness, we need a cleaning service we can count on— and that's exactly what we get. They clean our gym six nights a week, always showing up in the middle of the night, no matter the weather. Whether it's raining, snowing, or freezing cold, they're here making sure everything is spotless by morning. What stands out the most is how dependable and professional they are. The team is always on time, friendly, and they don't miss a detail. From the gym floor to the locker rooms, everything looks amazing when we open for business. We couldn't ask for a better cleaning service to keep our gym in top shape. If you need reliable, hardworking people to take care of your place, Cardoso Cleaning is the way to go!"
+  },
+  {
+    name: 'Bradlee Blosser',
+    role: 'Project and Contracts Coordinator with Nielsen Builders, Inc',
+    text: "Working with this team has made our transition between cleaning companies completely seamless. They've been extremely attentive to every request and consistently follow up to make sure everything is done just the way we need it. The cleaning has truly been next-level, especially considering the size of our office. They're a great family with a great business—reliable, professional, and genuinely trustworthy. We couldn't be happier with their service."
+  },
+  {
+    name: 'Cindy Roberts',
+    role: 'Home Owner, Staunton, Virginia',
+    text: "Maria and her cleaning team are wonderful! They are thorough (cleaning under furniture, beds, etc.) as well as doing all those cleaning chores I do not enjoy (mopping and dusting in particular!). I would highly recommend them to anyone!"
+  }
+];
 </script>
 
 <style scoped>
@@ -221,30 +237,66 @@ const openDrawer = inject('openQuoteDrawer');
   margin-bottom: var(--spacing-sm);
 }
 
-/* Re-using step card styles from HomeView */
-.step-card {
-  padding: var(--spacing-md);
+/* Testamonial*/
+.testimonials-section {
+  background-color: var(--color-background);
 }
-.step-number {
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  border-radius: 50%;
-  background-color: var(--color-accent);
-  color: var(--light-text);
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  margin: 0 auto var(--spacing-md);
+
+.testimonial-card {
+  background-color: var(--bg-primary); /* Light grey matches your theme */
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--primary-shadow);
+  flex-direction: column;
+  position: relative;
+  border-left: 5px solid var(--color-accent);
+  transition: transform 0.3s ease;
 }
-.step-title {
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-quote-icon {
+  font-size: 2.5rem;
+  color: var(--color-accent);
+  opacity: 0.5;
+  margin-bottom: var(--spacing-sm);
+}
+
+.testimonial-card-title {
   font-family: var(--font-family-headings);
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
+  font-size: 1.2rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: var(--spacing-md);
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: var(--spacing-sm);
+}
+
+.author-name {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.author-role {
+  font-size: 0.9rem;
+  color: var(--secondary-dark-grey);
 }
 
 /* Final CTA section, reusing home page styles */

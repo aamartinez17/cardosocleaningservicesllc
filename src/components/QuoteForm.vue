@@ -1,48 +1,54 @@
 <template>
+  <!-- 
+    This form component is self-contained.
+    It manages its own data and submission.
+  -->
   <form @submit.prevent="handleSubmit">
     <h3 class="form-title">Get a Free Quote</h3>
     <p class="form-subtitle">
       Fill out the form and we'll get back to you shortly.
     </p>
 
+    <!-- Section: Contact Info -->
     <fieldset class="form-section">
       <legend>Contact Info</legend>
       <div class="row">
-      <div class="mb-3 col-xl-6">
-        <label for="quoteName" class="form-label">Full Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="quoteName"
-          v-model="formData.name"
-          required
-        />
-      </div>
+        <div class="mb-3 col-xl-6">
+          <label for="quoteName" class="form-label">Full Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="quoteName"
+            v-model="formData.name"
+            required
+          />
+        </div>
 
-      <div class="mb-3 col-xl-6">
-        <label for="quotePhone" class="form-label">Phone Number</label>
-        <input
-          type="tel"
-          class="form-control"
-          id="quotePhone"
-          v-model="formData.phone"
-          required
-        />
-      </div>
+        <div class="mb-3 col-xl-6">
+          <label for="quotePhone" class="form-label">Phone Number</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="quotePhone"
+            v-model="formData.phone"
+            required
+          />
+        </div>
 
-      <div class="mb-3">
-        <label for="quoteEmail" class="form-label">Email Address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="quoteEmail"
-          v-model="formData.email"
-          required
-        />
-      </div>
+        <div class="mb-3">
+          <label for="quoteEmail" class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            id="quoteEmail"
+            v-model="formData.email"
+            required
+          />
+        </div>
       </div>
     </fieldset>
 
+    <!-- Section: Service Details -->
     <fieldset class="form-section">
       <legend>Service Details</legend>
       
@@ -121,9 +127,25 @@
       </div>
     </fieldset>
 
+    <!-- Section: Home Details -->
     <fieldset class="form-section">
       <legend>Home Details</legend>
       
+      <!-- NEW: Square Footage -->
+      <div class="mb-3">
+        <label for="quoteSqft" class="form-label">Approximate Square Footage</label>
+        <div class="input-group">
+          <input
+            type="number"
+            class="form-control"
+            id="quoteSqft"
+            v-model="formData.sqft"
+            placeholder="e.g. 2000"
+          />
+          <span class="input-group-text">sq. ft.</span>
+        </div>
+      </div>
+
       <label for="roomSelector" class="form-label">Rooms in Your Home</label>
       <select 
         class="form-select mb-3" 
@@ -164,6 +186,7 @@
       </div>
     </fieldset>
 
+    <!-- Section: Final Details -->
     <fieldset class="form-section">
       <legend>Final Details</legend>
       <div class="mb-3">
@@ -211,20 +234,20 @@ import { ref } from 'vue';
 
 // --- Form Data Management ---
 
-// A function to get the initial state, so we can easily reset the form
 const getInitialFormData = () => ({
   name: '',
   email: '',
   phone: '',
   service: '',
-  frequency: 'one-time', // Default value
+  frequency: 'one-time',
+  sqft: '', 
   address: {
     street: '',
     city: '',
-    state: 'VA', // Default to VA
+    state: 'VA',
     zip: ''
   },
-  rooms: [], // Will store { name: 'Bedroom', count: 1 }
+  rooms: [],
   pets: [
     { name: 'Dogs', count: 0 },
     { name: 'Cats', count: 0 },
@@ -234,11 +257,10 @@ const getInitialFormData = () => ({
   contactApproval: false
 });
 
-// The main reactive object for all form data
 const formData = ref(getInitialFormData());
 
 // --- Room Logic ---
-const newRoomType = ref(''); // Holds the value of the room dropdown
+const newRoomType = ref('');
 const availableRoomTypes = ref([
   'Bedroom', 
   'Bathroom', 
@@ -254,20 +276,16 @@ const availableRoomTypes = ref([
 
 const addRoom = () => {
   const roomName = newRoomType.value;
-  if (!roomName) return; // Do nothing if no room is selected
+  if (!roomName) return;
 
-  // Check if room already exists in the list
   const existingRoom = formData.value.rooms.find(room => room.name === roomName);
 
   if (existingRoom) {
-    // If it exists, just increase its count
     increaseRoomCount(existingRoom);
   } else {
-    // If not, add it to the list with a count of 1
     formData.value.rooms.push({ name: roomName, count: 1 });
   }
 
-  // Reset the dropdown
   newRoomType.value = '';
 };
 
@@ -279,7 +297,6 @@ const decreaseRoomCount = (room) => {
   if (room.count > 1) {
     room.count--;
   } else {
-    // If count is 1, remove the room from the list
     formData.value.rooms = formData.value.rooms.filter(r => r.name !== room.name);
   }
 };
@@ -297,25 +314,18 @@ const decreasePetCount = (pet) => {
 
 // --- Form Submission ---
 const handleSubmit = () => {
-  // TODO: Add your form submission logic here (e.g., send to an API).
   console.log('Form data submitted:', JSON.parse(JSON.stringify(formData.value)));
-  
-  // For demo purposes, we'll just show an alert.
-  // In a real app, you might show a success message.
   alert('Thank you! Your quote request has been sent.');
-  
-  // Reset form to its initial state
   formData.value = getInitialFormData();
 };
 </script>
 
 <style scoped>
-/* Styles for the form inside the drawer */
 .form-title {
   font-family: var(--font-family-headings);
   font-weight: var(--font-weight-bold);
   color: var(--color-primary);
-  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem); /* Responsive title */
+  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
 }
 .form-subtitle {
   color: var(--secondary-dark-grey);
@@ -328,9 +338,6 @@ const handleSubmit = () => {
   font-size: 0.9rem;
 }
 
-/* --- New Styles --- */
-
-/* Groups of fields */
 .form-section {
   border: 1px solid #e0e0e0;
   border-radius: var(--border-radius);
@@ -342,10 +349,9 @@ const handleSubmit = () => {
   font-weight: var(--font-weight-bold);
   font-size: 1.2rem;
   padding: 0 var(--spacing-sm);
-  width: auto; /* Required for legend styling */
+  width: auto;
 }
 
-/* List for Rooms/Pets */
 .item-list {
   border: 1px solid #e0e0e0;
   border-radius: var(--border-radius);
@@ -373,7 +379,6 @@ const handleSubmit = () => {
   color: var(--color-text-light);
 }
 
-/* Quantity [-] 1 [+] buttons */
 .quantity-control {
   display: flex;
   align-items: center;
@@ -389,17 +394,15 @@ const handleSubmit = () => {
   border: 1px solid var(--color-secondary);
   color: var(--color-primary);
   font-weight: var(--font-weight-bold);
-  border-radius: 50%; /* Makes it a circle */
+  border-radius: 50%;
   width: 30px;
   height: 30px;
   cursor: pointer;
   transition: var(--transition-default);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding-bottom: 5px;
+  padding-bottom: 3px; /* Visual tweak for symbol centering */
 }
 .quantity-btn:hover {
   background-color: var(--color-accent);
@@ -407,7 +410,6 @@ const handleSubmit = () => {
   color: var(--light-text);
 }
 
-/* Checkbox and Disclaimer */
 .form-check-label {
   color: var(--secondary-dark-grey);
   font-size: 0.85rem;
@@ -420,14 +422,12 @@ const handleSubmit = () => {
   margin-bottom: var(--spacing-md);
 }
 
-/* --- End New Styles --- */
-
 .cta-button-form {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
   color: var(--light-text);
   font-weight: var(--font-weight-bold);
-  padding: var(--spacing-md) var(--spacing-lg); /* Made button larger */
+  padding: var(--spacing-md) var(--spacing-lg);
   transition: var(--transition-default);
   text-transform: uppercase;
   font-size: 1.1rem;
