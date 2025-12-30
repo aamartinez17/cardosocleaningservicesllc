@@ -103,30 +103,82 @@ export const handler = async (event) => {
       replyTo: `"${data.name}" <${data.email}>`,
       subject: `[New Quote Request] ${data.name} - ${data.service}`,
       html: `
-        <h2 style="color: #2c3e50;">New Quote Request: Cardoso Cleaning</h2>
-        <p><strong>Customer:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Phone:</strong> ${data.phone}</p>
-        <hr />
-        <h3>Service Location</h3>
-        <p>
-          ${data.address.street}<br>
-          ${data.address.city}, ${data.address.state} ${data.address.zip}
-        </p>
-        <hr />
-        <h3>Job Details</h3>
-        <p><strong>Service Type:</strong> ${data.service}</p>
-        <p><strong>Frequency:</strong> ${data.frequency}</p>
-        <p><strong>Sq Ft:</strong> ${data.sqft || 'N/A'}</p>
-        <p><strong>Rooms Requested:</strong></p>
-        <ul>${roomListHtml}</ul>
-        <p><strong>Pets in Home:</strong></p>
-        <ul>${petListHtml}</ul>
-        <hr />
-        <p><strong>Message:</strong><br>${data.message || 'No additional message.'}</p>
-        <p><strong>Approved Contact via Text/Call:</strong> ${data.contactApproval ? 'YES' : 'NO'}</p>
-        <p><small>reCAPTCHA Score: ${recaptchaResult.score}</small></p>
-      `,
+        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 20px auto; color: #333; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            
+            <div style="background-color: #443091; padding: 25px; text-align: center;">
+            <h2 style="margin: 0; color: #ffffff; font-size: 22px; letter-spacing: 1px;">New Lead: Cardoso Cleaning</h2>
+            </div>
+
+            <div style="padding: 30px;">
+            
+            <div style="margin-bottom: 25px;">
+                <h3 style="color: #443091; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; font-size: 16px; text-transform: uppercase;">Customer Information</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 8px 0; color: #666; width: 100px;">Name:</td>
+                    <td style="padding: 8px 0;"><strong>${data.name}</strong></td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px 0; color: #666;">Phone:</td>
+                    <td style="padding: 8px 0;"><strong><a href="tel:${data.phone}" style="color: #443091; text-decoration: none;">${data.phone}</a></strong></td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px 0; color: #666;">Email:</td>
+                    <td style="padding: 8px 0;"><strong><a href="mailto:${data.email}" style="color: #443091; text-decoration: none;">${data.email}</a></strong></td>
+                </tr>
+                </table>
+            </div>
+
+            <div style="margin-bottom: 25px; background-color: #f8f9fa; padding: 15px; border-radius: 8px;">
+                <h3 style="color: #2c3e50; margin-top: 0; font-size: 15px;">Service Location</h3>
+                <p style="margin: 5px 0; line-height: 1.5;">
+                ${data.address.street}<br>
+                ${data.address.city}, ${data.address.state} ${data.address.zip}
+                </p>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <h3 style="color: #443091; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; font-size: 16px; text-transform: uppercase;">Job Details</h3>
+                <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 6px 0; color: #666;">Service Type:</td>
+                    <td><span style="background: #e7f3ff; color: #443091; padding: 2px 8px; border-radius: 4px; font-size: 13px; font-weight: bold;">${data.service.toUpperCase()}</span></td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 0; color: #666;">Frequency:</td>
+                    <td><strong>${data.frequency}</strong></td>
+                </tr>
+                <tr>
+                    <td style="padding: 6px 0; color: #666;">Square Footage:</td>
+                    <td><strong>${data.sqft || 'N/A'} sq. ft.</strong></td>
+                </tr>
+                </table>
+
+                <div style="margin-top: 15px; display: flex; gap: 20px;">
+                <div style="flex: 1;">
+                    <p style="margin: 0 0 5px 0; font-size: 13px; color: #666;">Rooms:</p>
+                    <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;">${roomListHtml}</ul>
+                </div>
+                <div style="flex: 1;">
+                    <p style="margin: 0 0 5px 0; font-size: 13px; color: #666;">Pets:</p>
+                    <ul style="margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.6;">${petListHtml}</ul>
+                </div>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid #eee; pt: 20px;">
+                <p style="margin: 0 0 5px 0; font-size: 13px; color: #666;">Additional Message:</p>
+                <div style="background: #fff; border: 1px dashed #ccc; padding: 15px; font-style: italic; border-radius: 4px;">
+                ${data.message || 'No additional message provided.'}
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; font-size: 12px; color: #999; text-align: center;">
+                <p style="margin: 5px 0;">Approved for Phone/Text: <strong style="color: ${data.contactApproval ? '#28a745' : '#dc3545'}">${data.contactApproval ? 'YES' : 'NO'}</strong></p>
+            </div>
+            </div>
+        </div>
+        `,
     });
 
     // === 4. SEND PROFESSIONAL CONFIRMATION TO CLIENT ===
@@ -134,7 +186,7 @@ export const handler = async (event) => {
       from: `"Cardoso Cleaning Services" <${process.env.EMAIL_USER}>`,
       to: data.email,
       replyTo: process.env.EMAIL_USER,
-      subject: 'We Received Your Quote Request - Cardoso Cleaning Services LLC',
+      subject: 'We Received Your Quote Request',
       html: `
         <div style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333; line-height: 1.6; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
           <div style="background-color: #ffffff; padding: 20px; text-align: center; border-bottom: 1px solid #eee;">

@@ -17,7 +17,7 @@
           Spotless Spaces, Brighter Lives
         </h1>
         <p class="hero-subtitle" data-aos="fade-left" data-aos-delay="300">
-          Professional residential and commercial cleaning in Harrisonburg.
+          Professional residential and commercial cleaning in Harrisonburg, VA.
         </p>
         <!-- 
           UPDATED: 
@@ -321,7 +321,7 @@
                 </h2>
                 <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
                   <div class="accordion-body">
-                    We are based in Harrisonburg, VA (2213 Pearl Ln) and proudly serve the entire Shenandoah Valley and surrounding areas.
+                    We are based in Harrisonburg, VA and proudly serve the entire Shenandoah Valley and surrounding areas.
                   </div>
                 </div>
               </div>

@@ -96,27 +96,34 @@
 
     <!-- 4. Testimonials Section -->
     <section class="testimonials-section page-section">
-      <div class="container">
-        <h2 class="section-title text-center" data-aos="fade-up">Hear From Our Community</h2>
-        <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">
-          We pride ourselves on the relationships we build with local families and businesses.
-        </p>
+  <div class="container">
+    <h2 class="section-title text-center" data-aos="fade-up">Hear From Our Community</h2>
+    <p class="section-subtitle text-center" data-aos="fade-up" data-aos-delay="100">
+      We pride ourselves on the relationships we build with local families and businesses.
+    </p>
 
-        <div class="row g-4">
-          <div v-for="(item, index) in testimonials" :key="index" class="col-lg-6" data-aos="fade-up" :data-aos-delay="index * 100">
-            <div class="testimonial-card">
-              <i class="bi bi-quote testimonial-quote-icon"></i>
-              <h4 v-if="item.title" class="testimonial-card-title">{{ item.title }}</h4>
-              <p class="testimonial-text">{{ item.text }}</p>
-              <div class="testimonial-author">
-                <span class="author-name">{{ item.name }}</span>
-                <span class="author-role">{{ item.role }}</span>
-              </div>
+    <div class="row g-4">
+      <div v-for="(item, index) in testimonials" :key="index" class="col-lg-6" data-aos="fade-up" :data-aos-delay="index * 100">
+        <div class="testimonial-card">
+          <i class="bi bi-quote testimonial-quote-icon"></i>
+          <h4 v-if="item.title" class="testimonial-card-title">{{ item.title }}</h4>
+          <p class="testimonial-text">{{ item.text }}</p>
+          
+          <div class="testimonial-author">
+            <span class="author-name">{{ item.name }}</span>
+            
+            <div v-if="item.link" class="author-role">
+              <a :href="item.link" target="_blank" rel="noopener noreferrer" class="testimonial-link">
+                {{ item.role }} <i class="bi bi-box-arrow-up-right ms-1" style="font-size: 0.8rem;"></i>
+              </a>
             </div>
+            <span v-else class="author-role">{{ item.role }}</span>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- 5. Final CTA -->
     <section class="final-cta-section">
@@ -146,18 +153,21 @@ const testimonials = [
   {
     name: 'Brad Cohen',
     role: 'Founder of Connexa Real Estate',
-    text: "As a local realtor in Harrisonburg, it is incredibly hard to find a cleaning company that is consistently reliable, responsive, and detail oriented. My experience with Cardoso's Cleaning Services in Harrisonburg, Virginia has been exceptional. Maria and her team were quick to respond, easy to schedule with, and immediately impressed me with their professionalism. Their attention to detail shows in every room they touch. The cleaning was thorough, thoughtful, and far exceeded the standard surface-level work I often see. They made the home feel genuinely refreshed and ready to show. The team is friendly, dependable, and truly trustworthy. It is clear they take pride in their work and treat every property with care, which is invaluable in my line of business. If you are looking for professional cleaning services in Harrisonburg, I highly recommend Cardoso's Cleaning Services. Their consistency, quality, and service make them a standout choice."
+    text: "As a local realtor in Harrisonburg, it is incredibly hard to find a cleaning company that is consistently reliable, responsive, and detail oriented. My experience with Cardoso's Cleaning Services in Harrisonburg, Virginia has been exceptional. Maria and her team were quick to respond, easy to schedule with, and immediately impressed me with their professionalism. Their attention to detail shows in every room they touch. The cleaning was thorough, thoughtful, and far exceeded the standard surface-level work I often see. They made the home feel genuinely refreshed and ready to show. The team is friendly, dependable, and truly trustworthy. It is clear they take pride in their work and treat every property with care, which is invaluable in my line of business. If you are looking for professional cleaning services in Harrisonburg, I highly recommend Cardoso's Cleaning Services. Their consistency, quality, and service make them a standout choice.",
+    link: "https://connexare.com/"
   },
   {
     name: 'Jenny Wetsel',
     role: 'General Manager, Valley Fitness Harrisonburg',
     title: '"Highly Recommend Cardoso Cleaning Services!"',
-    text: "At Valley Fitness, we need a cleaning service we can count on— and that's exactly what we get. They clean our gym six nights a week, always showing up in the middle of the night, no matter the weather. Whether it's raining, snowing, or freezing cold, they're here making sure everything is spotless by morning. What stands out the most is how dependable and professional they are. The team is always on time, friendly, and they don't miss a detail. From the gym floor to the locker rooms, everything looks amazing when we open for business. We couldn't ask for a better cleaning service to keep our gym in top shape. If you need reliable, hardworking people to take care of your place, Cardoso Cleaning is the way to go!"
+    text: "At Valley Fitness, we need a cleaning service we can count on— and that's exactly what we get. They clean our gym six nights a week, always showing up in the middle of the night, no matter the weather. Whether it's raining, snowing, or freezing cold, they're here making sure everything is spotless by morning. What stands out the most is how dependable and professional they are. The team is always on time, friendly, and they don't miss a detail. From the gym floor to the locker rooms, everything looks amazing when we open for business. We couldn't ask for a better cleaning service to keep our gym in top shape. If you need reliable, hardworking people to take care of your place, Cardoso Cleaning is the way to go!",
+    link: "https://valleyfitnessharrisonburg.com/"
   },
   {
     name: 'Bradlee Blosser',
     role: 'Project and Contracts Coordinator with Nielsen Builders, Inc',
-    text: "Working with this team has made our transition between cleaning companies completely seamless. They've been extremely attentive to every request and consistently follow up to make sure everything is done just the way we need it. The cleaning has truly been next-level, especially considering the size of our office. They're a great family with a great business—reliable, professional, and genuinely trustworthy. We couldn't be happier with their service."
+    text: "Working with this team has made our transition between cleaning companies completely seamless. They've been extremely attentive to every request and consistently follow up to make sure everything is done just the way we need it. The cleaning has truly been next-level, especially considering the size of our office. They're a great family with a great business—reliable, professional, and genuinely trustworthy. We couldn't be happier with their service.",
+    link: "https://www.nielsen-inc.com/"
   },
   {
     name: 'Cindy Roberts',
@@ -294,7 +304,20 @@ const testimonials = [
   font-size: 1.1rem;
 }
 
+.testimonial-link {
+  color: var(--color-primary); /* Or your preferred brand blue */
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+}
+
+.testimonial-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
 .author-role {
+  display: block; /* Ensures role appears under the name */
   font-size: 0.9rem;
   color: var(--secondary-dark-grey);
 }
