@@ -16,9 +16,9 @@
         <h1 class="hero-title" data-aos="fade-left">
           Spotless Spaces, Brighter Lives
         </h1>
-        <p class="hero-subtitle" data-aos="fade-left" data-aos-delay="300">
-          Professional residential and commercial cleaning in Harrisonburg, VA.
-        </p>
+        <h1 class="hero-subtitle" data-aos="fade-left" data-aos-delay="300">
+          Professional residential and commercial cleaning in Harrisonburg VA and the Shenandoah Valley.
+        </h1>
         <!-- 
           UPDATED: 
           Changed from <router-link> to <button>
@@ -265,7 +265,7 @@
         <div class="row align-items-center">
           
           <!-- FAQ Accordion (Left Column) -->
-          <div class="col-lg-6" data-aos="fade-right">
+          <div class="col-lg-12" data-aos="fade-right">
             <h2 class="section-title mb-4">Frequently Asked Questions</h2>
             
             <div class="accordion" id="faqAccordion">
@@ -358,14 +358,13 @@
           </div>
           
           <!-- Image (Right Column) -->
-          <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="100">
-            <!-- TODO: Replace this placeholder with a real photo -->
+          <!-- <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-delay="100">
             <img 
               src="/images/homeview-faq.png" 
               alt="Cardoso Cleaning team member" 
               class="faq-image"
             >
-          </div>
+          </div> -->
         </div>
       </div>
     </section>
@@ -527,6 +526,7 @@ const googleReviewLink = ref('https://g.page/r/YOUR_BUSINESS_ID/review')
   transition: var(--transition-default);
   text-transform: uppercase;
   font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-lg);
 }
 .cta-button-hero:hover {
   background-color: var(--light-text);
@@ -897,6 +897,11 @@ const googleReviewLink = ref('https://g.page/r/YOUR_BUSINESS_ID/review')
   }
 }
 @media (max-width: 991.98px) {
+
+  .hero-section {
+    padding-top: var(--spacing-lg);
+  }
+
   .faq-image {
     margin-bottom: var(--spacing-lg);
   }

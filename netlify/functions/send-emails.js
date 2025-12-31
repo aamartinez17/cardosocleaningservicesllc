@@ -63,7 +63,7 @@ export const handler = async (event) => {
     // We trim them to remove accidental spaces/newlines from .env files
     const emailUser = (process.env.EMAIL_USER || "").trim();
     const emailPass = (process.env.EMAIL_PASS || "").trim();
-    const logoUrl = "https://cardosocleaningservicesllc.netlify.app/logos/Cardoso-Cleaning-Services-LLC-LOGO.png";
+    const logoUrl = "https://cardosocleaningservices.com/logos/Cardoso-Cleaning-Services-LLC-LOGO.png";
 
 
     // Debugging logs (Safe: won't show your password, only if they exist)

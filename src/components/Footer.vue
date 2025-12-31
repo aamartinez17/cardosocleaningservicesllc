@@ -73,7 +73,7 @@
             <a href="https://www.facebook.com/Cardoso.Cleaning" target="_blank" aria-label="Facebook" title="Facebook">
               <i class="bi bi-facebook"></i>
             </a>
-            <a href="https://www.instagram.com/cardoso.cleaning/" target="_blank" aria-label="Instagram" title="Instagram">
+            <a href="https://www.instagram.com/cardoso.cleaning" target="_blank" aria-label="Instagram" title="Instagram">
               <i class="bi bi-instagram"></i>
             </a>
             <!-- <a href="#" target="_blank" aria-label="Yelp" title="Yelp">

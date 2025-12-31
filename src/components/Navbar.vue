@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" ref="navRef">
-    <div class="container p-0 my-0">
+    <div class="container d-flex align-items-center justify-content-between my-0 px-2">
       
-      <!-- Logo / Brand Link -->
-      <router-link class="navbar-brand p-0" to="/">
+      <!-- 1. Logo / Brand Link -->
+      <router-link class="navbar-brand p-0 m-0" to="/">
         <img 
           src="/logos/Cardoso-Cleaning-Services-LLC-LOGO.png" 
           alt="Cardoso-Cleaning-Services-LLC-LOGO" 
@@ -11,9 +11,16 @@
         >
       </router-link>
 
-      <!-- Mobile Toggler Button -->
+      <!-- 2. NEW: Mobile-only CTA Button (Outside Collapse) -->
+      <div class="d-lg-none mx-auto">
+        <button @click="openDrawer" class="btn cta-button btn-sm px-3">
+          Get A Quote
+        </button>
+      </div>
+
+      <!-- 3. Mobile Toggler Button -->
       <button 
-        class="navbar-toggler" 
+        class="navbar-toggler border-0" 
         type="button" 
         data-bs-toggle="collapse" 
         data-bs-target="#navbarNav" 
@@ -24,26 +31,16 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!-- 
-        Collapsible Menu
-        UPDATED: Added ref="navbarNavRef" for manual collapse control
-      -->
+      <!-- 4. Collapsible Menu -->
       <div class="collapse navbar-collapse" id="navbarNav" ref="navbarNavRef">
-        <!-- 
-          'ms-auto' pushes the nav links to the right.
-          'align-items-center' vertically centers items in the mobile menu.
-        -->
         <ul class="navbar-nav ms-auto align-items-center">
           
           <!-- Dynamic Nav Links -->
           <li class="nav-item" v-for="link in navLinks" :key="link.name">
-            
-            <!-- Standard Link -->
             <router-link v-if="!link.isDropdown" class="nav-link" :to="link.path">
               {{ link.name }}
             </router-link>
 
-            <!-- UPDATED: Dropdown Link -->
             <li v-if="link.isDropdown" class="nav-item dropdown">
               <a 
                 class="nav-link dropdown-toggle" 
@@ -55,11 +52,7 @@
               >
                 {{ link.name }}
               </a>
-              <ul class="dropdown-menu" :aria-labelledby="`navbarDropdown-${link.name}`">
-                <!-- 
-                  UPDATED: 
-                  This loop now supports dividers (v-if/v-else)
-                -->
+              <ul class="dropdown-menu text-center text-lg-start" :aria-labelledby="`navbarDropdown-${link.name}`">
                 <li v-for="(child, index) in link.children" :key="child.name || `divider-${index}`">
                   <hr v-if="child.isDivider" class="dropdown-divider">
                   <router-link v-else class="dropdown-item" :to="child.path">
@@ -68,15 +61,10 @@
                 </li>
               </ul>
             </li>
-
           </li>
 
-          <!-- Call-to-Action (CTA) Button -->
-          <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-            <!-- 
-              UPDATED: 
-              Changed from <router-link> to <button>
-            -->
+          <!-- 5. Desktop CTA Button (Hidden on Mobile) -->
+          <li class="nav-item ms-lg-2 d-none d-lg-block">
             <button @click="openDrawer" class="btn cta-button">
               Get a Quote
             </button>
@@ -88,16 +76,13 @@
 </template>
 
 <script setup>
-// --- UPDATED IMPORTS (Added onUnmounted) ---
 import { ref, inject, onMounted, onUnmounted, watch } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
-import { Collapse } from 'bootstrap'; // Import Bootstrap's JS
+import { Collapse } from 'bootstrap';
 
-// --- Inject functions/state from App.vue ---
 const openDrawer = inject('openQuoteDrawer');
-const isDrawerOpen = inject('isDrawerOpen'); // Injected the state
+const isDrawerOpen = inject('isDrawerOpen');
 
-// --- Page Links ---
 const navLinks = ref([
   { name: 'Home', path: '/' },
   { name: 'About Us', path: '/about' },
@@ -116,82 +101,72 @@ const navLinks = ref([
   { name: 'Contact', path: '/contact' },
 ]);
 
-// --- NAVBAR COLLAPSE LOGIC ---
-const navRef = ref(null); // --- ADDED: Ref for the entire <nav> element
-const navbarNavRef = ref(null); // Ref for the collapsible element
-const collapseInstance = ref(null); // Ref to store the Bootstrap Collapse instance
-const route = useRoute(); // Get the route object
+const navRef = ref(null);
+const navbarNavRef = ref(null);
+const collapseInstance = ref(null);
+const route = useRoute();
 
-// When the component mounts, create the Bootstrap Collapse instance
 onMounted(() => {
   if (navbarNavRef.value) {
     collapseInstance.value = new Collapse(navbarNavRef.value, {
-      toggle: false, // We will control it manually
+      toggle: false,
     });
   }
-  
-  // --- ADDED: Listen for clicks on the whole document
   document.addEventListener('click', handleClickOutside);
 });
 
-// --- ADDED: Clean up the listener when the component is destroyed
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside);
-  // Also, destroy the Bootstrap instance to prevent memory leaks
   if (collapseInstance.value) {
     collapseInstance.value.dispose();
   }
 });
 
-// Function to manually hide the navbar
 const hideNavbar = () => {
   if (collapseInstance.value) {
     collapseInstance.value.hide();
   }
 };
 
-// --- ADDED: Handler to check if the click was outside the navbar
 const handleClickOutside = (event) => {
-  // Check if the collapsible menu is even open
   const isNavbarOpen = navbarNavRef.value?.classList.contains('show');
-  if (!isNavbarOpen || !navRef.value) {
-    return; // Not open or ref isn't ready, do nothing
-  }
-
-  // Check if the click's target is NOT the navbar or a child of the navbar
+  if (!isNavbarOpen || !navRef.value) return;
   if (!navRef.value.contains(event.target)) {
-    hideNavbar(); // If the click was outside, hide the menu
+    hideNavbar();
   }
 };
 
-
-// Watcher 1: Close navbar on route change (e.g., clicking a link)
 watch(() => route.path, () => {
   hideNavbar();
 });
 
-// Watcher 2: Close navbar when the form drawer opens
 watch(isDrawerOpen, (isOpen) => {
   if (isOpen) {
     hideNavbar();
   }
 });
-// --- END NEW LOGIC ---
 </script>
 
 <style scoped>
-/* All existing styles remain the same */
 .navbar {
   background-color: var(--color-background);
   box-shadow: var(--box-shadow);
-  /* padding-top: var(--spacing-sm);
-  padding-bottom: var(--spacing-sm); */
   min-height: var(--top-padding);
 }
 
-.navbar-logo {
+.navbar-brand img{
   height: 70px;
+}
+
+.navbar-logo {
+  height: 60px; /* Slightly smaller for mobile layout space */
   width: auto;
+}
+
+@media (min-width: 992px) {
+  .navbar-logo {
+    height: 70px;
+  }
 }
 
 .nav-link {
@@ -209,7 +184,6 @@ watch(isDrawerOpen, (isOpen) => {
   color: var(--color-primary);
 }
 
-/* Style for the dropdown menu */
 .dropdown-menu {
   border-radius: var(--border-radius);
   border: 1px solid rgba(0,0,0,0.1);
@@ -229,7 +203,6 @@ watch(isDrawerOpen, (isOpen) => {
   background-color: var(--bg-primary);
   color: var(--color-primary);
 }
-/* End of new styles */
 
 .cta-button {
   background-color: var(--color-accent);
@@ -240,6 +213,7 @@ watch(isDrawerOpen, (isOpen) => {
   padding: var(--spacing-sm) var(--spacing-md);
   transition: var(--transition-default);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .cta-button:hover {
@@ -251,12 +225,15 @@ watch(isDrawerOpen, (isOpen) => {
 }
 
 @media (max-width: 991.98px) {
+  .navbar-logo {
+    height: 50px; /* More space for the button */
+  }
   .nav-link {
     padding: var(--spacing-md) 0;
     text-align: center;
   }
   .cta-button {
-    width: 100%;
+    font-size: 0.85rem;
   }
 }
 </style>
